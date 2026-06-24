@@ -39,7 +39,6 @@ reference/
   point-to-prove-list-2026.<pdf|docx>                  # offences with their points to prove (also see POINTS_TO_PROVE.md at project root)
 ```
 
-> **Current state:** All source PDFs and the `.ods` notifiable list are at the project root, not yet moved into the `rules/`/`guidance/`/`reference/` subdirectories. The document ingestion step must handle this reorganisation.
 
 **These documents change.** The Home Office reissues them (typically annually, sometimes mid-year). The app must treat them as **hot-swappable**:
 
@@ -213,7 +212,7 @@ When instructed to build a feature:
 Suggested build order:
 
 - [x] Project scaffold: Docker, FastAPI (`uv`) backend, frontend, start/stop scripts, `/api/health`.
-- [ ] Document ingestion: parse rules/guidance/reference files (pdf, docx, **xlsx**); structure and cache; version/hash detection; `/api/knowledge`, `/api/knowledge/refresh`. Fail loudly on a missing file.
+- [x] Document ingestion: parse rules/guidance/reference files (pdf, docx, **xlsx/ods**); structure and cache; version/hash detection; `/api/knowledge`, `/api/knowledge/refresh`. Fail loudly on a missing file.
 - [ ] LLM client: OpenRouter gateway with Cerebras provider pinning; `.env` config; optional direct-Cerebras route; Pydantic structured output with one re-prompt on validation failure.
 - [ ] Assessment engine: log ingestion, summary, people extraction, vulnerability flags, points-to-prove mapping, certainty scoring, notifiable cross-reference; `/api/assess`.
 - [ ] Selection + report: candidate selection model, report generation (selected + considered), provenance footer; `/api/reports`.

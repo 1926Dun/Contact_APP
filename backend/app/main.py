@@ -3,8 +3,13 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
+import logging
+
 from .db import init_db
+from .knowledge import load_knowledge
 from .routes import router
+
+log = logging.getLogger(__name__)
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
 
@@ -12,6 +17,11 @@ FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend" / "dis
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
+    kb = load_knowledge()
+    log.info(
+        "Knowledge base loaded: %d documents",
+        len(kb.documents),
+    )
     yield
 
 

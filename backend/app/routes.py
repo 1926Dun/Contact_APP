@@ -2,6 +2,7 @@ from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel
 
 from .db import get_db
+from .knowledge import get_knowledge, refresh_knowledge
 
 router = APIRouter(prefix="/api")
 
@@ -16,6 +17,20 @@ class LogResponse(BaseModel):
     filename: str | None
     text: str
     created_at: str
+
+
+@router.get("/knowledge")
+async def knowledge_status():
+    """Return loaded source documents with versions and hashes."""
+    kb = get_knowledge()
+    return {"documents": kb.summary()}
+
+
+@router.post("/knowledge/refresh")
+async def knowledge_refresh():
+    """Re-ingest source documents after a Home Office update."""
+    kb = refresh_knowledge()
+    return {"documents": kb.summary(), "refreshed": True}
 
 
 @router.post("/assess", response_model=LogResponse)
