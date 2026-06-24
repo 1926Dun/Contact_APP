@@ -1,0 +1,9 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Crime Recording Assessment App — backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.138.0",
+    "uvicorn[standard]>=0.49.0",
+]

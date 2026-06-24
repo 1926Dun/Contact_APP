@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime Recording Assessment</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Crime Recording Assessment</h1>
+    <p class="subtitle">Decision support for Home Office crime-recording rules</p>
+  </header>
+
+  <main>
+    <div class="banner">
+      This tool provides decision support only. The recording decision rests with the trained user.
+    </div>
+
+    <section id="log-input">
+      <h2>Assess a log</h2>
+      <textarea id="log-text" placeholder="Paste the police log here..." rows="10"></textarea>
+      <button id="assess-btn" class="btn-primary">Assess</button>
+    </section>
+
+    <section id="results" hidden>
+      <div id="results-content"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span id="health-status">Checking connection...</span>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

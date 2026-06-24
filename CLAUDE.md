@@ -210,9 +210,9 @@ When instructed to build a feature:
 
 ## Implementation status
 
-Greenfield — nothing built yet. Suggested build order:
+Suggested build order:
 
-- [ ] Project scaffold: Docker, FastAPI (`uv`) backend, frontend, start/stop scripts, `/api/health`.
+- [x] Project scaffold: Docker, FastAPI (`uv`) backend, frontend, start/stop scripts, `/api/health`.
 - [ ] Document ingestion: parse rules/guidance/reference files (pdf, docx, **xlsx**); structure and cache; version/hash detection; `/api/knowledge`, `/api/knowledge/refresh`. Fail loudly on a missing file.
 - [ ] LLM client: OpenRouter gateway with Cerebras provider pinning; `.env` config; optional direct-Cerebras route; Pydantic structured output with one re-prompt on validation failure.
 - [ ] Assessment engine: log ingestion, summary, people extraction, vulnerability flags, points-to-prove mapping, certainty scoring, notifiable cross-reference; `/api/assess`.
