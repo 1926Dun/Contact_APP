@@ -213,7 +213,7 @@ Suggested build order:
 
 - [x] Project scaffold: Docker, FastAPI (`uv`) backend, frontend, start/stop scripts, `/api/health`.
 - [x] Document ingestion: parse rules/guidance/reference files (pdf, docx, **xlsx/ods**); structure and cache; version/hash detection; `/api/knowledge`, `/api/knowledge/refresh`. Fail loudly on a missing file.
-- [ ] LLM client: OpenRouter gateway with Cerebras provider pinning; `.env` config; optional direct-Cerebras route; Pydantic structured output with one re-prompt on validation failure.
+- [x] LLM client: OpenRouter gateway with Cerebras provider pinning; `.env` config; Pydantic structured output with one re-prompt on validation failure.
 - [ ] Assessment engine: log ingestion, summary, people extraction, vulnerability flags, points-to-prove mapping, certainty scoring, notifiable cross-reference; `/api/assess`.
 - [ ] Selection + report: candidate selection model, report generation (selected + considered), provenance footer; `/api/reports`.
 - [ ] Persistence: SQLite for logs, assessments, selections, reports + document versions; `/api/logs` CRUD, `/api/reports/{id}`.
