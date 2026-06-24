@@ -1,10 +1,22 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
-app = FastAPI(title="Crime Recording Assessment App")
+from .db import init_db
+from .routes import router
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await init_db()
+    yield
+
+
+app = FastAPI(title="Crime Recording Assessment App", lifespan=lifespan)
+app.include_router(router)
 
 
 @app.get("/api/health")

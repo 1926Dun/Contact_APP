@@ -19,7 +19,24 @@
 
     <section id="log-input">
       <h2>Assess a log</h2>
-      <textarea id="log-text" placeholder="Paste the police log here..." rows="10"></textarea>
+
+      <div class="input-tabs">
+        <button class="tab active" data-tab="paste">Paste text</button>
+        <button class="tab" data-tab="upload">Upload .txt file</button>
+      </div>
+
+      <div id="tab-paste" class="tab-panel">
+        <textarea id="log-text" placeholder="Paste the police log here..." rows="10"></textarea>
+      </div>
+
+      <div id="tab-upload" class="tab-panel" hidden>
+        <label class="file-drop" id="file-drop">
+          <input type="file" id="log-file" accept=".txt">
+          <span>Choose a .txt file or drag it here</span>
+        </label>
+        <p id="file-name" class="file-name"></p>
+      </div>
+
       <button id="assess-btn" class="btn-primary">Assess</button>
     </section>
 

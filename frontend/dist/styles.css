@@ -78,6 +78,57 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .btn-primary:hover { opacity: 0.9; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
+.input-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0.75rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background: #eee;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--slate-text);
+}
+
+.tab:first-child { border-radius: 4px 0 0 4px; }
+.tab:last-child { border-radius: 0 4px 4px 0; }
+.tab.active { background: var(--authority-blue); color: #fff; border-color: var(--authority-blue); }
+
+.file-drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 2rem;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.file-drop:hover,
+.file-drop.dragover { border-color: var(--authority-blue); color: var(--authority-blue); }
+.file-drop input[type="file"] { display: none; }
+
+.file-name { margin-top: 0.5rem; font-size: 0.85rem; color: var(--authority-blue); }
+
+.result-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.result-card h3 { color: var(--police-navy); font-size: 1rem; margin-bottom: 0.5rem; }
+.result-card pre { white-space: pre-wrap; font-size: 0.85rem; line-height: 1.5; }
+.result-meta { font-size: 0.8rem; color: #888; margin-top: 0.5rem; }
+
 footer {
   padding: 0.75rem 2rem;
   font-size: 0.75rem;
