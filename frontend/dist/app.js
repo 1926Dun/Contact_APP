@@ -33,13 +33,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(() => { errorBanner.hidden = true; }, 8000);
   }
 
-  // Health check
+  // Health check — always runs on load to clear any stale error banner
+  errorBanner.hidden = true;
   try {
     const res = await fetch("/api/health");
     const data = await res.json();
-    status.textContent = data.status === "ok" ? "Connected" : "Service unavailable";
+    if (data.status === "ok") {
+      status.textContent = "Connected";
+    } else {
+      status.textContent = "Service unavailable";
+      showError("Server is reachable but reports a problem. Check the backend logs.");
+    }
   } catch {
     status.textContent = "Cannot reach server";
+    showError("Could not reach the server. Please check the backend is running.");
   }
 
   // Navigation
