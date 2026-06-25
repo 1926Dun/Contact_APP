@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const status = document.getElementById("health-status");
+  const navBtns = document.querySelectorAll(".nav-btn");
+  const pageNew = document.getElementById("page-new");
+  const pageHistory = document.getElementById("page-history");
+  const pageKnowledge = document.getElementById("page-knowledge");
+  const pages = { new: pageNew, history: pageHistory, knowledge: pageKnowledge };
+
   const tabs = document.querySelectorAll(".tab");
   const pastePanel = document.getElementById("tab-paste");
   const uploadPanel = document.getElementById("tab-upload");
@@ -8,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const fileDrop = document.getElementById("file-drop");
   const fileName = document.getElementById("file-name");
   const assessBtn = document.getElementById("assess-btn");
+  const logInput = document.getElementById("log-input");
   const results = document.getElementById("results");
   const resultsContent = document.getElementById("results-content");
   const reportSection = document.getElementById("report-section");
@@ -18,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let selectedFile = null;
   let currentLogId = null;
 
+  // Health check
   try {
     const res = await fetch("/api/health");
     const data = await res.json();
@@ -26,6 +34,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     status.textContent = "Cannot reach server";
   }
 
+  // Navigation
+  navBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const page = btn.id.replace("nav-", "");
+      navBtns.forEach(b => b.classList.toggle("active", b === btn));
+      Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== page; });
+      if (page === "history") loadHistory();
+      if (page === "knowledge") loadKnowledge();
+    });
+  });
+
+  // Input tabs
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       activeTab = tab.dataset.tab;
@@ -35,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // File input
   fileInput.addEventListener("change", () => {
     selectedFile = fileInput.files[0] || null;
     fileName.textContent = selectedFile ? selectedFile.name : "";
@@ -52,6 +73,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  // New assessment reset
+  document.getElementById("new-assessment-btn").addEventListener("click", resetForm);
+
+  // Export report
+  document.getElementById("export-report-btn").addEventListener("click", () => {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`<!DOCTYPE html><html><head><title>Crime Recording Report</title>
+      <link rel="stylesheet" href="/styles.css">
+      <style>body{background:#fff;padding:2rem;max-width:900px;margin:0 auto}
+      .btn-primary,.btn-secondary,.nav-btn,.candidate-checkbox,.selection-instruction{display:none!important}
+      @media print{body{padding:0}}</style>
+      </head><body>${reportContent.innerHTML}</body></html>`);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  });
+
+  // Assess
   assessBtn.addEventListener("click", async () => {
     assessBtn.disabled = true;
     assessBtn.textContent = "Assessing...";
@@ -86,6 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const data = await res.json();
       currentLogId = data.log.id;
       resultsContent.innerHTML = renderAssessment(data);
+      logInput.hidden = true;
       results.hidden = false;
 
       document.getElementById("generate-report-btn")
@@ -97,6 +137,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       assessBtn.textContent = "Assess";
     }
   });
+
+  function resetForm() {
+    logInput.hidden = false;
+    results.hidden = true;
+    reportSection.hidden = true;
+    textarea.value = "";
+    fileInput.value = "";
+    selectedFile = null;
+    fileName.textContent = "";
+    currentLogId = null;
+  }
 
   async function generateReport() {
     const checkboxes = document.querySelectorAll(".candidate-checkbox:checked");
@@ -135,7 +186,100 @@ document.addEventListener("DOMContentLoaded", async () => {
       btn.textContent = "Generate report";
     }
   }
+
+  async function loadHistory() {
+    const container = document.getElementById("history-list");
+    container.innerHTML = "<p>Loading...</p>";
+    try {
+      const res = await fetch("/api/logs");
+      const logs = await res.json();
+      if (logs.length === 0) {
+        container.innerHTML = "<p class='empty-state'>No assessments yet.</p>";
+        return;
+      }
+      let html = `<table class="data-table history-table">
+        <tr><th>ID</th><th>Source</th><th>Preview</th><th>Date</th><th></th></tr>`;
+      for (const l of logs) {
+        const preview = esc(l.text.substring(0, 80)) + (l.text.length > 80 ? "..." : "");
+        html += `<tr>
+          <td>${l.id}</td>
+          <td>${esc(l.source)}</td>
+          <td>${preview}</td>
+          <td>${esc(l.created_at)}</td>
+          <td><button class="btn-link view-log-btn" data-id="${l.id}">View</button></td>
+        </tr>`;
+      }
+      html += `</table>`;
+      container.innerHTML = html;
+
+      container.querySelectorAll(".view-log-btn").forEach(btn => {
+        btn.addEventListener("click", () => viewLog(parseInt(btn.dataset.id)));
+      });
+    } catch {
+      container.innerHTML = "<p>Failed to load history.</p>";
+    }
+  }
+
+  async function viewLog(logId) {
+    try {
+      const res = await fetch(`/api/logs/${logId}`);
+      const data = await res.json();
+      if (!data.assessment) {
+        alert("No assessment found for this log.");
+        return;
+      }
+      currentLogId = logId;
+      resultsContent.innerHTML = renderAssessment({ log: data.log, assessment: data.assessment });
+      logInput.hidden = true;
+      results.hidden = false;
+      reportSection.hidden = true;
+
+      document.getElementById("nav-new").click();
+
+      document.getElementById("generate-report-btn")
+        ?.addEventListener("click", () => generateReport());
+    } catch {
+      alert("Failed to load log.");
+    }
+  }
+
+  async function loadKnowledge() {
+    const container = document.getElementById("knowledge-list");
+    container.innerHTML = "<p>Loading...</p>";
+    try {
+      const res = await fetch("/api/knowledge");
+      const data = await res.json();
+      let html = `<table class="data-table">
+        <tr><th>Document</th><th>File</th><th>Hash</th><th>Pages</th><th>Size</th></tr>`;
+      for (const d of data.documents) {
+        html += `<tr>
+          <td>${esc(d.label)}</td>
+          <td>${esc(d.filename)}</td>
+          <td><code>${esc(d.file_hash)}</code></td>
+          <td>${d.pages ?? "-"}</td>
+          <td>${d.table_rows ? d.table_rows + " rows" : Math.round(d.text_length / 1024) + " KB"}</td>
+        </tr>`;
+      }
+      html += `</table>
+        <button id="refresh-knowledge-btn" class="btn-secondary" style="margin-top:1rem">Refresh documents</button>`;
+      container.innerHTML = html;
+
+      document.getElementById("refresh-knowledge-btn").addEventListener("click", async () => {
+        const btn = document.getElementById("refresh-knowledge-btn");
+        btn.disabled = true;
+        btn.textContent = "Refreshing...";
+        await fetch("/api/knowledge/refresh", { method: "POST" });
+        btn.textContent = "Refresh documents";
+        btn.disabled = false;
+        loadKnowledge();
+      });
+    } catch {
+      container.innerHTML = "<p>Failed to load documents.</p>";
+    }
+  }
 });
+
+// --- Render functions ---
 
 function renderAssessment(data) {
   const { log, assessment } = data;

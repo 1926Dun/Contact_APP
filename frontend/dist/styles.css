@@ -18,15 +18,42 @@ body {
   flex-direction: column;
 }
 
+/* Header */
 header {
   background: var(--police-navy);
   color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
 }
 
-header h1 { font-size: 1.4rem; font-weight: 600; }
-header .subtitle { font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem; }
+.header-row {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 
+header h1 { font-size: 1.3rem; font-weight: 600; }
+header .subtitle { font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; }
+
+.header-nav { display: flex; gap: 0.25rem; }
+
+.nav-btn {
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-btn:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+.nav-btn.active { background: var(--authority-blue); color: #fff; border-color: var(--authority-blue); }
+
+/* Main */
 main {
   flex: 1;
   max-width: 900px;
@@ -45,24 +72,18 @@ main {
   margin-bottom: 1.5rem;
 }
 
-h2 {
-  color: var(--police-navy);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+h2 { color: var(--police-navy); font-size: 1.1rem; margin-bottom: 0.75rem; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  resize: vertical;
-}
+.section-header h2 { margin-bottom: 0; }
 
-textarea:focus { outline: 2px solid var(--authority-blue); border-color: transparent; }
-
+/* Buttons */
 .btn-primary {
   margin-top: 0.75rem;
   padding: 0.6rem 1.5rem;
@@ -78,6 +99,32 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .btn-primary:hover { opacity: 0.9; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
+.btn-secondary {
+  padding: 0.4rem 1rem;
+  background: #fff;
+  color: var(--authority-blue);
+  border: 1px solid var(--authority-blue);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-secondary:hover { background: #f0f6fc; }
+.btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--authority-blue);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-link:hover { color: var(--police-navy); }
+
+/* Form elements */
 .redact-toggle {
   display: flex;
   align-items: center;
@@ -100,11 +147,20 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
   margin-bottom: 1rem;
 }
 
-.input-tabs {
-  display: flex;
-  gap: 0;
-  margin-bottom: 0.75rem;
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
 }
+
+textarea:focus { outline: 2px solid var(--authority-blue); border-color: transparent; }
+
+/* Tabs */
+.input-tabs { display: flex; gap: 0; margin-bottom: 0.75rem; }
 
 .tab {
   padding: 0.5rem 1rem;
@@ -120,6 +176,7 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .tab:last-child { border-radius: 0 4px 4px 0; }
 .tab.active { background: var(--authority-blue); color: #fff; border-color: var(--authority-blue); }
 
+/* File upload */
 .file-drop {
   display: flex;
   align-items: center;
@@ -136,9 +193,9 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .file-drop:hover,
 .file-drop.dragover { border-color: var(--authority-blue); color: var(--authority-blue); }
 .file-drop input[type="file"] { display: none; }
-
 .file-name { margin-top: 0.5rem; font-size: 0.85rem; color: var(--authority-blue); }
 
+/* Cards */
 .result-card {
   background: #fff;
   border: 1px solid #ddd;
@@ -153,24 +210,33 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .result-card ul { margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.9rem; }
 .result-meta { font-size: 0.8rem; color: #888; margin-top: 0.5rem; }
 
+/* Tables */
 .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
 .data-table th { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 2px solid var(--police-navy); color: var(--police-navy); }
 .data-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid #eee; }
 
+.history-table tr:hover { background: #f8f9fa; }
+
+/* People badges */
 .role-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
 .role-victim { background: #fde8e8; color: #c0392b; }
 .role-suspect { background: #fef3e2; color: #d35400; }
 .role-witness { background: #e8f4fd; color: var(--authority-blue); }
 
+/* Candidates */
 .candidate { border: 1px solid #ddd; border-radius: 4px; padding: 0.75rem; margin-top: 0.75rem; }
 .candidate-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
 .candidate-legislation { font-size: 0.8rem; color: #666; margin-bottom: 0.5rem; }
+.candidate-checkbox { width: 1.1rem; height: 1.1rem; cursor: pointer; accent-color: var(--action-teal); }
+.selection-instruction { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
 
+/* Certainty */
 .certainty-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem; font-weight: 700; min-width: 3rem; text-align: center; }
 .certainty-high { background: #d4edda; color: #155724; }
 .certainty-mid { background: #fff3cd; color: #856404; }
 .certainty-low { background: #f8d7da; color: #721c24; }
 
+/* Points to prove */
 details { margin-top: 0.5rem; }
 details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-blue); }
 
@@ -179,11 +245,8 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
 .ptp-notmet td:nth-child(2) { color: #721c24; font-weight: 600; }
 .ptp-unclear td:nth-child(2) { color: #856404; font-weight: 600; }
 
-.candidate-checkbox { width: 1.1rem; height: 1.1rem; cursor: pointer; accent-color: var(--action-teal); }
-.selection-instruction { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
-
+/* Report */
 .btn-report { margin-top: 1rem; display: block; }
-
 .report-header h2 { color: var(--police-navy); font-size: 1.2rem; }
 .report-selected { border-left: 4px solid var(--action-teal); }
 .report-not-selected { border-left: 4px solid #ccc; opacity: 0.85; }
@@ -191,9 +254,21 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
 .provenance { font-size: 0.85rem; }
 .provenance code { background: #eee; padding: 0.1rem 0.3rem; border-radius: 2px; font-size: 0.8rem; }
 
+/* States */
+.empty-state { color: #888; font-size: 0.9rem; padding: 2rem 0; text-align: center; }
+
+/* Footer */
 footer {
   padding: 0.75rem 2rem;
   font-size: 0.75rem;
   color: #888;
   text-align: center;
+}
+
+/* Print */
+@media print {
+  header, footer, .banner, .nav-btn, .btn-secondary, .btn-primary,
+  .candidate-checkbox, .selection-instruction, .redact-toggle { display: none !important; }
+  main { padding: 0; max-width: 100%; }
+  .result-card { break-inside: avoid; }
 }

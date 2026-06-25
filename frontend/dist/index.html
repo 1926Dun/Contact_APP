@@ -8,8 +8,17 @@
 </head>
 <body>
   <header>
-    <h1>Crime Recording Assessment</h1>
-    <p class="subtitle">Decision support for Home Office crime-recording rules</p>
+    <div class="header-row">
+      <div>
+        <h1>Crime Recording Assessment</h1>
+        <p class="subtitle">Decision support for Home Office crime-recording rules</p>
+      </div>
+      <nav class="header-nav">
+        <button id="nav-new" class="nav-btn active">New</button>
+        <button id="nav-history" class="nav-btn">History</button>
+        <button id="nav-knowledge" class="nav-btn">Documents</button>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -17,40 +26,60 @@
       This tool provides decision support only. The recording decision rests with the trained user.
     </div>
 
-    <section id="log-input">
-      <h2>Assess a log</h2>
+    <section id="page-new">
+      <section id="log-input">
+        <h2>Assess a log</h2>
 
-      <div class="input-tabs">
-        <button class="tab active" data-tab="paste">Paste text</button>
-        <button class="tab" data-tab="upload">Upload .txt file</button>
-      </div>
+        <div class="input-tabs">
+          <button class="tab active" data-tab="paste">Paste text</button>
+          <button class="tab" data-tab="upload">Upload .txt file</button>
+        </div>
 
-      <div id="tab-paste" class="tab-panel">
-        <textarea id="log-text" placeholder="Paste the police log here..." rows="10"></textarea>
-      </div>
+        <div id="tab-paste" class="tab-panel">
+          <textarea id="log-text" placeholder="Paste the police log here..." rows="10"></textarea>
+        </div>
 
-      <div id="tab-upload" class="tab-panel" hidden>
-        <label class="file-drop" id="file-drop">
-          <input type="file" id="log-file" accept=".txt">
-          <span>Choose a .txt file or drag it here</span>
+        <div id="tab-upload" class="tab-panel" hidden>
+          <label class="file-drop" id="file-drop">
+            <input type="file" id="log-file" accept=".txt">
+            <span>Choose a .txt file or drag it here</span>
+          </label>
+          <p id="file-name" class="file-name"></p>
+        </div>
+
+        <label class="redact-toggle">
+          <input type="checkbox" id="redact-toggle">
+          Redact names and identifiers before sending to AI
         </label>
-        <p id="file-name" class="file-name"></p>
-      </div>
 
-      <label class="redact-toggle">
-        <input type="checkbox" id="redact-toggle">
-        Redact names and identifiers before sending to AI
-      </label>
+        <button id="assess-btn" class="btn-primary">Assess</button>
+      </section>
 
-      <button id="assess-btn" class="btn-primary">Assess</button>
+      <section id="results" hidden>
+        <div class="section-header">
+          <h2>Assessment results</h2>
+          <button id="new-assessment-btn" class="btn-secondary">New assessment</button>
+        </div>
+        <div id="results-content"></div>
+      </section>
+
+      <section id="report-section" hidden>
+        <div class="section-header">
+          <h2>Report</h2>
+          <button id="export-report-btn" class="btn-secondary">Export / Print</button>
+        </div>
+        <div id="report-content"></div>
+      </section>
     </section>
 
-    <section id="results" hidden>
-      <div id="results-content"></div>
+    <section id="page-history" hidden>
+      <h2>Assessment history</h2>
+      <div id="history-list"></div>
     </section>
 
-    <section id="report-section" hidden>
-      <div id="report-content"></div>
+    <section id="page-knowledge" hidden>
+      <h2>Loaded source documents</h2>
+      <div id="knowledge-list"></div>
     </section>
   </main>
 

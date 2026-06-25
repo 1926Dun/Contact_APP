@@ -218,4 +218,4 @@ Suggested build order:
 - [x] Selection + report: candidate selection model, report generation (selected + considered), provenance footer; `/api/reports`.
 - [x] Persistence: SQLite for logs, assessments, selections, reports + document versions; `/api/logs` CRUD, `/api/reports/{id}`.
 - [x] Data handling: optional redaction/pseudonymisation before transmission; audit-trail completeness.
-- [ ] UI: paste/upload log → assessment view (summary, people, vulnerabilities, scored candidates) → select crimes → report view with provenance, ordered by certainty.
+- [x] UI: paste/upload log → assessment view (summary, people, vulnerabilities, scored candidates) → select crimes → report view with provenance, ordered by certainty.
