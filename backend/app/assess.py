@@ -299,7 +299,7 @@ def assess_log(
     # Programmatic override: authoritative lookup against the HOCR page 14 table.
     # The LLM's is_principal_crime value is discarded; the table is the source of truth.
     for candidate in assessment.candidates:
-        is_pc, max_sentence = pc_lookup(candidate.classification_code)
+        is_pc, max_sentence = pc_lookup(candidate.classification_code, candidate.offence_title)
         candidate.is_principal_crime = is_pc
         candidate.principal_crime_max_sentence = max_sentence
 
