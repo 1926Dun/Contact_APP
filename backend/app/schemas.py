@@ -48,3 +48,28 @@ class Assessment(BaseModel):
     candidates: list[CandidateCrime] = Field(
         description="Candidate crimes ordered by certainty, highest first"
     )
+
+
+class DocumentVersion(BaseModel):
+    key: str
+    label: str
+    filename: str
+    file_hash: str
+
+
+class Report(BaseModel):
+    log_id: int
+    metadata: LogMetadata
+    summary: str
+    people: list[Person]
+    crimes_selected: list[CandidateCrime]
+    crimes_not_selected: list[CandidateCrime]
+    document_versions: list[DocumentVersion]
+    created_at: str
+
+
+class ReportRequest(BaseModel):
+    log_id: int
+    selected_indices: list[int] = Field(
+        description="Zero-based indices of candidates the user selected"
+    )

@@ -7,6 +7,8 @@ from pydantic import BaseModel
 from .assess import assess_log
 from .db import get_db
 from .knowledge import get_knowledge, refresh_knowledge
+from .report import generate_report
+from .schemas import Assessment, ReportRequest
 
 log = logging.getLogger(__name__)
 
@@ -133,6 +135,58 @@ async def get_log(log_id: int):
     return result
 
 
+@router.post("/reports")
+async def create_report(body: ReportRequest):
+    """Generate a report from user's crime selections."""
+    db = await get_db()
+
+    arow = await db.execute(
+        "SELECT result_json FROM assessments WHERE log_id = ?", (body.log_id,)
+    )
+    assessment_row = await arow.fetchone()
+    if not assessment_row:
+        await db.close()
+        raise HTTPException(404, "Assessment not found for this log")
+
+    assessment = Assessment.model_validate_json(assessment_row["result_json"])
+
+    if any(i < 0 or i >= len(assessment.candidates) for i in body.selected_indices):
+        await db.close()
+        raise HTTPException(400, "Invalid candidate index")
+
+    report = generate_report(body.log_id, assessment, body.selected_indices)
+    report_json = report.model_dump_json()
+
+    cursor = await db.execute(
+        "INSERT INTO reports (log_id, report_json) VALUES (?, ?)",
+        (body.log_id, report_json),
+    )
+    await db.commit()
+    report_id = cursor.lastrowid
+    await db.close()
+
+    result = report.model_dump()
+    result["id"] = report_id
+    return result
+
+
+@router.get("/reports/{report_id}")
+async def get_report(report_id: int):
+    """Retrieve a saved report."""
+    db = await get_db()
+    row = await db.execute(
+        "SELECT id, log_id, report_json, created_at FROM reports WHERE id = ?",
+        (report_id,),
+    )
+    report_row = await row.fetchone()
+    await db.close()
+    if not report_row:
+        raise HTTPException(404, "Report not found")
+    result = json.loads(report_row["report_json"])
+    result["id"] = report_row["id"]
+    return result
+
+
 @router.delete("/logs/{log_id}")
 async def delete_log(log_id: int):
     db = await get_db()
@@ -140,6 +194,7 @@ async def delete_log(log_id: int):
     if not await row.fetchone():
         await db.close()
         raise HTTPException(404, "Log not found")
+    await db.execute("DELETE FROM reports WHERE log_id = ?", (log_id,))
     await db.execute("DELETE FROM assessments WHERE log_id = ?", (log_id,))
     await db.execute("DELETE FROM logs WHERE id = ?", (log_id,))
     await db.commit()

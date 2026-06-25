@@ -31,6 +31,14 @@ async def init_db():
             created_at TEXT NOT NULL DEFAULT (datetime('now'))
         )
     """)
+    await db.execute("""
+        CREATE TABLE IF NOT EXISTS reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            log_id INTEGER NOT NULL REFERENCES logs(id) ON DELETE CASCADE,
+            report_json TEXT NOT NULL,
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
+        )
+    """)
     await db.execute("PRAGMA foreign_keys = ON")
     await db.commit()
     await db.close()

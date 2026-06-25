@@ -10,11 +10,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const assessBtn = document.getElementById("assess-btn");
   const results = document.getElementById("results");
   const resultsContent = document.getElementById("results-content");
+  const reportSection = document.getElementById("report-section");
+  const reportContent = document.getElementById("report-content");
 
   let activeTab = "paste";
   let selectedFile = null;
+  let currentLogId = null;
 
-  // Health check
   try {
     const res = await fetch("/api/health");
     const data = await res.json();
@@ -23,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     status.textContent = "Cannot reach server";
   }
 
-  // Tab switching
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       activeTab = tab.dataset.tab;
@@ -33,13 +34,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // File input
   fileInput.addEventListener("change", () => {
     selectedFile = fileInput.files[0] || null;
     fileName.textContent = selectedFile ? selectedFile.name : "";
   });
 
-  // Drag and drop
   fileDrop.addEventListener("dragover", e => { e.preventDefault(); fileDrop.classList.add("dragover"); });
   fileDrop.addEventListener("dragleave", () => fileDrop.classList.remove("dragover"));
   fileDrop.addEventListener("drop", e => {
@@ -52,11 +51,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // Submit
   assessBtn.addEventListener("click", async () => {
     assessBtn.disabled = true;
     assessBtn.textContent = "Assessing...";
     results.hidden = true;
+    reportSection.hidden = true;
 
     try {
       let res;
@@ -82,8 +81,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       const data = await res.json();
+      currentLogId = data.log.id;
       resultsContent.innerHTML = renderAssessment(data);
       results.hidden = false;
+
+      document.getElementById("generate-report-btn")
+        ?.addEventListener("click", () => generateReport());
     } catch {
       alert("Could not reach the server.");
     } finally {
@@ -91,6 +94,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       assessBtn.textContent = "Assess";
     }
   });
+
+  async function generateReport() {
+    const checkboxes = document.querySelectorAll(".candidate-checkbox:checked");
+    const selected = Array.from(checkboxes).map(cb => parseInt(cb.dataset.index));
+
+    if (selected.length === 0) {
+      alert("Select at least one candidate crime to generate a report.");
+      return;
+    }
+
+    const btn = document.getElementById("generate-report-btn");
+    btn.disabled = true;
+    btn.textContent = "Generating...";
+
+    try {
+      const res = await fetch("/api/reports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ log_id: currentLogId, selected_indices: selected }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        alert(err.detail || "Report generation failed");
+        return;
+      }
+
+      const report = await res.json();
+      reportContent.innerHTML = renderReport(report);
+      reportSection.hidden = false;
+      reportSection.scrollIntoView({ behavior: "smooth" });
+    } catch {
+      alert("Could not reach the server.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Generate report";
+    }
+  }
 });
 
 function renderAssessment(data) {
@@ -99,78 +140,138 @@ function renderAssessment(data) {
 
   let html = `<div class="result-card">
     <h3>Summary</h3>
-    <p>${escapeHtml(a.summary)}</p>
+    <p>${esc(a.summary)}</p>
     <p class="result-meta">Log ID: ${log.id} | ${log.created_at}</p>
   </div>`;
 
-  // Metadata
   const m = a.metadata;
   if (m.reference_number || m.date || m.location) {
     html += `<div class="result-card"><h3>Log details</h3><ul>`;
-    if (m.reference_number) html += `<li>Reference: ${escapeHtml(m.reference_number)}</li>`;
-    if (m.date) html += `<li>Date: ${escapeHtml(m.date)}</li>`;
-    if (m.times && m.times.length) html += `<li>Time(s): ${m.times.map(escapeHtml).join(", ")}</li>`;
-    if (m.location) html += `<li>Location: ${escapeHtml(m.location)}</li>`;
+    if (m.reference_number) html += `<li>Reference: ${esc(m.reference_number)}</li>`;
+    if (m.date) html += `<li>Date: ${esc(m.date)}</li>`;
+    if (m.times && m.times.length) html += `<li>Time(s): ${m.times.map(esc).join(", ")}</li>`;
+    if (m.location) html += `<li>Location: ${esc(m.location)}</li>`;
     html += `</ul></div>`;
   }
 
-  // People
   if (a.people.length) {
-    html += `<div class="result-card"><h3>People</h3><table class="data-table">
-      <tr><th>Name</th><th>Role</th><th>Basis</th></tr>`;
-    for (const p of a.people) {
-      html += `<tr><td>${escapeHtml(p.name)}</td>
-        <td><span class="role-badge role-${p.role}">${escapeHtml(p.role)}</span></td>
-        <td>${escapeHtml(p.basis)}</td></tr>`;
-    }
-    html += `</table></div>`;
+    html += `<div class="result-card"><h3>People</h3>` + renderPeopleTable(a.people) + `</div>`;
   }
 
-  // Vulnerabilities
   if (a.vulnerabilities.length) {
     html += `<div class="result-card"><h3>Vulnerabilities</h3><ul>`;
     for (const v of a.vulnerabilities) {
-      html += `<li><strong>${escapeHtml(v.indicator)}</strong> (${escapeHtml(v.person)}): ${escapeHtml(v.detail)}</li>`;
+      html += `<li><strong>${esc(v.indicator)}</strong> (${esc(v.person)}): ${esc(v.detail)}</li>`;
     }
     html += `</ul></div>`;
   }
 
-  // Candidate crimes
   if (a.candidates.length) {
-    html += `<div class="result-card"><h3>Candidate crimes</h3>`;
-    for (const c of a.candidates) {
-      const band = c.certainty >= 70 ? "high" : c.certainty >= 40 ? "mid" : "low";
-      html += `<div class="candidate">
-        <div class="candidate-header">
-          <span class="certainty-badge certainty-${band}">${c.certainty}%</span>
-          <strong>${escapeHtml(c.offence_title)}</strong>
-        </div>
-        <p class="candidate-legislation">${escapeHtml(c.legislation)}${c.classification_code ? " [" + escapeHtml(c.classification_code) + "]" : ""}${c.notifiable ? " — Notifiable" : ""}</p>
-        <p>${escapeHtml(c.rationale)}</p>`;
-
-      if (c.points_to_prove && c.points_to_prove.length) {
-        html += `<details><summary>Points to prove (${c.points_to_prove.length})</summary><table class="data-table ptp-table">
-          <tr><th>Point</th><th>Status</th><th>Evidence</th></tr>`;
-        for (const pt of c.points_to_prove) {
-          const cls = pt.status === "met" ? "ptp-met" : pt.status === "not_met" ? "ptp-notmet" : "ptp-unclear";
-          html += `<tr class="${cls}"><td>${escapeHtml(pt.point)}</td>
-            <td>${escapeHtml(pt.status)}</td>
-            <td>${escapeHtml(pt.supporting_text)}</td></tr>`;
-        }
-        html += `</table></details>`;
-      }
-
-      if (c.nsir_alternative) html += `<p class="result-meta">NSIR alternative: ${escapeHtml(c.nsir_alternative)}</p>`;
-      if (c.guidance_applied && c.guidance_applied.length) html += `<p class="result-meta">Guidance: ${c.guidance_applied.map(escapeHtml).join(", ")}</p>`;
-      html += `</div>`;
+    html += `<div class="result-card"><h3>Candidate crimes</h3>
+      <p class="selection-instruction">Select the crimes you agree with, then generate the report.</p>`;
+    for (let i = 0; i < a.candidates.length; i++) {
+      html += renderCandidate(a.candidates[i], i, true);
     }
+    html += `<button id="generate-report-btn" class="btn-primary btn-report">Generate report</button>`;
     html += `</div>`;
   }
 
   return html;
 }
 
-function escapeHtml(s) {
+function renderCandidate(c, index, withCheckbox) {
+  const band = c.certainty >= 70 ? "high" : c.certainty >= 40 ? "mid" : "low";
+  let html = `<div class="candidate">
+    <div class="candidate-header">`;
+
+  if (withCheckbox) {
+    html += `<input type="checkbox" class="candidate-checkbox" data-index="${index}" checked>`;
+  }
+
+  html += `<span class="certainty-badge certainty-${band}">${c.certainty}%</span>
+      <strong>${esc(c.offence_title)}</strong>
+    </div>
+    <p class="candidate-legislation">${esc(c.legislation)}${c.classification_code ? " [" + esc(c.classification_code) + "]" : ""}${c.notifiable ? " — Notifiable" : ""}</p>
+    <p>${esc(c.rationale)}</p>`;
+
+  if (c.points_to_prove && c.points_to_prove.length) {
+    html += `<details><summary>Points to prove (${c.points_to_prove.length})</summary>
+      <table class="data-table ptp-table">
+      <tr><th>Point</th><th>Status</th><th>Evidence</th></tr>`;
+    for (const pt of c.points_to_prove) {
+      const cls = pt.status === "met" ? "ptp-met" : pt.status === "not_met" ? "ptp-notmet" : "ptp-unclear";
+      html += `<tr class="${cls}"><td>${esc(pt.point)}</td>
+        <td>${esc(pt.status)}</td><td>${esc(pt.supporting_text)}</td></tr>`;
+    }
+    html += `</table></details>`;
+  }
+
+  if (c.nsir_alternative) html += `<p class="result-meta">NSIR alternative: ${esc(c.nsir_alternative)}</p>`;
+  if (c.guidance_applied && c.guidance_applied.length) html += `<p class="result-meta">Guidance: ${c.guidance_applied.map(esc).join(", ")}</p>`;
+  html += `</div>`;
+  return html;
+}
+
+function renderPeopleTable(people) {
+  let html = `<table class="data-table">
+    <tr><th>Name</th><th>Role</th><th>Basis</th></tr>`;
+  for (const p of people) {
+    html += `<tr><td>${esc(p.name)}</td>
+      <td><span class="role-badge role-${p.role}">${esc(p.role)}</span></td>
+      <td>${esc(p.basis)}</td></tr>`;
+  }
+  return html + `</table>`;
+}
+
+function renderReport(r) {
+  let html = `<div class="report">
+    <div class="result-card report-header">
+      <h2>Crime Recording Assessment Report</h2>
+      <p class="result-meta">Report ID: ${r.id} | Log ID: ${r.log_id} | Generated: ${esc(r.created_at)}</p>
+    </div>`;
+
+  const m = r.metadata;
+  html += `<div class="result-card"><h3>Log details</h3><ul>`;
+  if (m.reference_number) html += `<li>Reference: ${esc(m.reference_number)}</li>`;
+  if (m.date) html += `<li>Date: ${esc(m.date)}</li>`;
+  if (m.times && m.times.length) html += `<li>Time(s): ${m.times.map(esc).join(", ")}</li>`;
+  if (m.location) html += `<li>Location: ${esc(m.location)}</li>`;
+  html += `</ul></div>`;
+
+  html += `<div class="result-card"><h3>Summary</h3><p>${esc(r.summary)}</p></div>`;
+
+  if (r.people.length) {
+    html += `<div class="result-card"><h3>People</h3>` + renderPeopleTable(r.people) + `</div>`;
+  }
+
+  if (r.crimes_selected.length) {
+    html += `<div class="result-card report-selected"><h3>Crimes selected for recording</h3>`;
+    for (const c of r.crimes_selected) html += renderCandidate(c, 0, false);
+    html += `</div>`;
+  }
+
+  if (r.crimes_not_selected.length) {
+    html += `<div class="result-card report-not-selected"><h3>Crimes considered but not selected</h3>`;
+    for (const c of r.crimes_not_selected) html += renderCandidate(c, 0, false);
+    html += `</div>`;
+  }
+
+  if (r.document_versions && r.document_versions.length) {
+    html += `<div class="result-card provenance"><h3>Provenance</h3>
+      <table class="data-table">
+      <tr><th>Document</th><th>File</th><th>Hash</th></tr>`;
+    for (const d of r.document_versions) {
+      html += `<tr><td>${esc(d.label)}</td><td>${esc(d.filename)}</td><td><code>${esc(d.file_hash)}</code></td></tr>`;
+    }
+    html += `</table></div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function esc(s) {
+  if (s == null) return "";
   const d = document.createElement("div");
   d.textContent = s;
   return d.innerHTML;
