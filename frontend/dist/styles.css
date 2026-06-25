@@ -262,6 +262,17 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
 .ptp-notmet td:nth-child(2) { color: #721c24; font-weight: 600; }
 .ptp-unclear td:nth-child(2) { color: #856404; font-weight: 600; }
 
+/* Error banner */
+.error-banner {
+  background: #fdecea;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
 /* Counting rules panel */
 .counting-rules { border-left: 4px solid var(--elevation-gold); }
 .counting-rules h3 { color: var(--police-navy); }

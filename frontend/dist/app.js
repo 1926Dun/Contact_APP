@@ -25,6 +25,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   let selectedFile = null;
   let currentLogId = null;
 
+  const errorBanner = document.getElementById("error-banner");
+  function showError(msg) {
+    errorBanner.textContent = msg;
+    errorBanner.hidden = false;
+    errorBanner.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    setTimeout(() => { errorBanner.hidden = true; }, 8000);
+  }
+
   // Health check
   try {
     const res = await fetch("/api/health");
@@ -112,13 +120,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: JSON.stringify({ text: textarea.value, redact: useRedact }),
         });
       } else {
-        alert("Please paste a log or upload a .txt file.");
+        showError("Please paste a log or upload a file.");
         return;
       }
 
       if (!res.ok) {
         const err = await res.json();
-        alert(err.detail || "Assessment failed");
+        showError(err.detail || "Assessment failed.");
         return;
       }
 
@@ -131,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("generate-report-btn")
         ?.addEventListener("click", () => generateReport());
     } catch {
-      alert("Could not reach the server.");
+      showError("Could not reach the server. Please check the backend is running.");
     } finally {
       assessBtn.disabled = false;
       assessBtn.textContent = "Assess";
@@ -154,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const selected = Array.from(checkboxes).map(cb => parseInt(cb.dataset.index));
 
     if (selected.length === 0) {
-      alert("Select at least one candidate crime to generate a report.");
+      showError("Select at least one candidate crime to generate a report.");
       return;
     }
 
@@ -171,7 +179,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!res.ok) {
         const err = await res.json();
-        alert(err.detail || "Report generation failed");
+        showError(err.detail || "Report generation failed.");
         return;
       }
 
@@ -180,7 +188,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       reportSection.hidden = false;
       reportSection.scrollIntoView({ behavior: "smooth" });
     } catch {
-      alert("Could not reach the server.");
+      showError("Could not reach the server. Please check the backend is running.");
     } finally {
       btn.disabled = false;
       btn.textContent = "Generate report";
@@ -225,7 +233,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const res = await fetch(`/api/logs/${logId}`);
       const data = await res.json();
       if (!data.assessment) {
-        alert("No assessment found for this log.");
+        showError("No assessment found for this log.");
         return;
       }
       currentLogId = logId;
@@ -239,7 +247,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("generate-report-btn")
         ?.addEventListener("click", () => generateReport());
     } catch {
-      alert("Failed to load log.");
+      showError("Failed to load log.");
     }
   }
 
