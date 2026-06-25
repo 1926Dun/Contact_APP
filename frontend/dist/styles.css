@@ -273,6 +273,33 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
   font-size: 0.9rem;
 }
 
+/* Principal crime badge and section labels */
+.principal-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #0a2342;
+  color: #c8a24b;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.principal-section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--police-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1rem 0 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--police-navy);
+}
+.non-principal-label {
+  color: #666;
+  border-bottom-color: #ccc;
+  margin-top: 1.5rem;
+}
+
 /* Counting rules panel */
 .counting-rules { border-left: 4px solid var(--elevation-gold); }
 .counting-rules h3 { color: var(--police-navy); }

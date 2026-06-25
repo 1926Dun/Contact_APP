@@ -33,6 +33,13 @@ class CandidateCrime(BaseModel):
     legislation: str
     classification_code: str | None = None
     notifiable: bool | None = None
+    is_principal_crime: bool = Field(
+        description="True if this offence appears in the Principal Crime look-up table (HOCR page 14)"
+    )
+    principal_crime_max_sentence: str | None = Field(
+        default=None,
+        description="Maximum sentence from the Principal Crime table, e.g. '10 yrs', 'Life'"
+    )
     certainty: int = Field(ge=0, le=100, description="0-100 in 10-point increments")
     rationale: str
     points_to_prove: list[PointToProveMapping]

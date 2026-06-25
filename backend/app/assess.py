@@ -85,6 +85,17 @@ counting rules inform that decision but are not applied here.
 
 {nsir_excerpt}
 
+## Principal Crime look-up table (HOCR page 14)
+
+This is the authoritative list of principal crimes. For EVERY candidate offence \
+you MUST check whether it appears in this table and set is_principal_crime \
+accordingly. Also record the maximum sentence shown in the table \
+(e.g. "Life", "10 yrs", "5 yrs") in principal_crime_max_sentence. \
+If the offence does NOT appear in this table, set is_principal_crime = false \
+and principal_crime_max_sentence = null.
+
+{principal_crime_table}
+
 ## Points to prove (master reference)
 
 For each candidate offence, map every point to prove below to the log \
@@ -148,6 +159,10 @@ where relevant but do not let them suppress any candidate.
    - classification_code: the Home Office classification code if known \
 (format like "001/01", "008/10", etc.)
    - notifiable: true/false if determinable
+   - is_principal_crime: true if the offence appears in the Principal \
+Crime look-up table above (HOCR page 14), false otherwise.
+   - principal_crime_max_sentence: the maximum sentence from the table \
+(e.g. "Life", "10 yrs", "5 yrs") if is_principal_crime is true, else null.
    - certainty: 0-100 in 10-point increments ONLY (0,10,20...100). \
 Driven by the proportion of points to prove clearly met, adjusted for \
 how directly the log evidences each one.
@@ -224,12 +239,29 @@ def _excerpt_nsir(text: str, max_chars: int = 2000) -> str:
     return "\n".join(key_sections)[:max_chars]
 
 
+def _extract_principal_crime_table() -> str:
+    """Extract the Principal Crime look-up table from page 14 of the HOCR PDF."""
+    import pathlib
+    import pymupdf
+
+    hocr_path = pathlib.Path(__file__).parent.parent.parent / "rules"
+    candidates = list(hocr_path.glob("crime-recording-rules-*.pdf"))
+    if not candidates:
+        return ""
+    doc = pymupdf.open(candidates[0])
+    # Page 14 is index 13
+    if len(doc) < 14:
+        return ""
+    return doc[13].get_text()
+
+
 def build_system_prompt() -> str:
     """Assemble the system prompt from cached knowledge base documents."""
     kb = get_knowledge()
     return SYSTEM_PROMPT_TEMPLATE.format(
         hocr_excerpt=_excerpt_hocr(kb.get("hocr").text),
         nsir_excerpt=_excerpt_nsir(kb.get("nsir").text),
+        principal_crime_table=_extract_principal_crime_table(),
         points_to_prove=kb.get("points_to_prove").text,
         retail_robbery=kb.get("retail_robbery").text,
         schools_protocol=kb.get("schools_protocol").text,

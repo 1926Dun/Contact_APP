@@ -335,10 +335,29 @@ function renderAssessment(data) {
   }
 
   if (a.candidates.length) {
+    // Sort: principal crimes first (by certainty desc), then non-principal (by certainty desc)
+    const indexed = a.candidates.map((c, i) => ({ c, i }));
+    indexed.sort((a, b) => {
+      if (a.c.is_principal_crime !== b.c.is_principal_crime)
+        return a.c.is_principal_crime ? -1 : 1;
+      return b.c.certainty - a.c.certainty;
+    });
+
+    const principalCount = indexed.filter(x => x.c.is_principal_crime).length;
+
     html += `<div class="result-card"><h3>Candidate crimes</h3>
       <p class="selection-instruction">Select the crimes you agree with, then generate the report.</p>`;
-    for (let i = 0; i < a.candidates.length; i++) {
-      html += renderCandidate(a.candidates[i], i, true);
+
+    if (principalCount > 0) {
+      html += `<p class="principal-section-label">Principal crimes (HOCR page 14 look-up table)</p>`;
+    }
+    let inNonPrincipal = false;
+    for (const { c, i } of indexed) {
+      if (!c.is_principal_crime && !inNonPrincipal) {
+        html += `<p class="principal-section-label non-principal-label">Other candidate offences (not in principal crime table)</p>`;
+        inNonPrincipal = true;
+      }
+      html += renderCandidate(c, i, true);
     }
     html += `</div>`;
   }
@@ -383,6 +402,7 @@ function renderCandidate(c, index, withCheckbox) {
 
   html += `<span class="certainty-badge certainty-${band}">${c.certainty}%</span>
       <strong>${esc(c.offence_title)}</strong>
+      ${c.is_principal_crime ? `<span class="principal-badge">Principal crime${c.principal_crime_max_sentence ? " · " + esc(c.principal_crime_max_sentence) : ""}</span>` : ""}
     </div>
     <p class="candidate-legislation">${esc(c.legislation)}${c.classification_code ? " [" + esc(c.classification_code) + "]" : ""}${c.notifiable ? " — Notifiable" : ""}</p>
     ${renderRationale(c.rationale)}`;
