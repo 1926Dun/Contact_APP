@@ -52,6 +52,12 @@ DOCUMENT_MAP = {
         "glob": "POINTS_TO_PROVE*",
         "format": "markdown",
     },
+    "vulnerability": {
+        "label": "Vulnerability Identification Guide",
+        "dir": "reference",
+        "glob": "Vulnerability*",
+        "format": "markdown",
+    },
 }
 
 

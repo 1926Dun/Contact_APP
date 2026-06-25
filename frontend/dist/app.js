@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     e.preventDefault();
     fileDrop.classList.remove("dragover");
     const file = e.dataTransfer.files[0];
-    if (file && file.name.endsWith(".txt")) {
+    if (file && /\.(txt|pdf|docx)$/i.test(file.name)) {
       selectedFile = file;
       fileName.textContent = file.name;
     }

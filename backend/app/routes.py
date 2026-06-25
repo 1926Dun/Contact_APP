@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from .assess import assess_log
 from .db import get_db
 from .knowledge import get_knowledge, refresh_knowledge
+from .parse_file import extract_text, is_supported, SUPPORTED_EXTENSIONS
 from .report import generate_report
 from .schemas import Assessment, ReportRequest
 
@@ -82,11 +83,13 @@ async def assess_file(
     text: str = Form(None),
     redact: bool = Form(False),
 ):
-    """Accept a police log as uploaded .txt file or pasted text."""
+    """Accept a police log as uploaded file (.txt, .pdf, .docx) or pasted text."""
     if file and file.filename:
-        if not file.filename.endswith(".txt"):
-            raise HTTPException(400, "Only .txt files are supported")
-        content = (await file.read()).decode("utf-8")
+        if not is_supported(file.filename):
+            exts = ", ".join(sorted(SUPPORTED_EXTENSIONS))
+            raise HTTPException(400, f"Supported formats: {exts}")
+        data = await file.read()
+        content = extract_text(file.filename, data)
         source = "file"
         filename = file.filename
     elif text:

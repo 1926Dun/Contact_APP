@@ -50,6 +50,13 @@ as MET / NOT_MET / UNCLEAR, citing the supporting text from the log.
 When the log discloses fraud, note that fraud offences are routed to \
 NFIB / Action Fraud. Reflect this in the candidate's guidance_applied field.
 
+## Vulnerability identification
+
+Use this framework (College of Policing / THRIVE) to assess vulnerability. \
+Apply the ABCDE model and look for barriers to disclosure as clues.
+
+{vulnerability_guide}
+
 ## Instructions
 
 Given the police log below, produce a structured assessment with:
@@ -63,9 +70,14 @@ the log. Leave null if not stated; never guess.
 (victim/suspect/witness), and the basis for that role from the log. \
 If ambiguous, say so.
 
-4. **vulnerabilities** — any vulnerability indicators: age, mental health, \
-disability, domestic abuse, repeat victimisation, exploitation, etc. \
-Each with the indicator name, who it relates to, and supporting detail.
+4. **vulnerabilities** — use the ABCDE framework (Appearance, Behaviour, \
+Communication, Danger, Environment) and the barriers-to-disclosure clues \
+from the Vulnerability Identification Guide above. Look for indicators \
+across all vulnerability strands: domestic abuse, stalking, CSE, modern \
+slavery, FGM, honour-based abuse, adult/child safeguarding, mental health, \
+age, disability, repeat victimisation, exploitation, coercive control, etc. \
+Each with the indicator name, who it relates to, and supporting detail \
+from the log.
 
 5. **candidates** — every offence the log may disclose:
    - offence_title and legislation
@@ -150,6 +162,7 @@ def build_system_prompt() -> str:
         points_to_prove=kb.get("points_to_prove").text,
         retail_robbery=kb.get("retail_robbery").text,
         schools_protocol=kb.get("schools_protocol").text,
+        vulnerability_guide=kb.get("vulnerability").text,
     )
 
 

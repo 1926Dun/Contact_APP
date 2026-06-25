@@ -1,0 +1,1317 @@
+ 
+LOG - 54250023913 
+Event
+EventId = POL-20250225-0097 
+Agency = POL 
+ReportedTime = 2025-02-25T10:37:38 
+DispatchType = D99 
+PoliceType = RMS CRIME 
+CallSource ( OriginalValue = "TOT" ) = NET 
+Priority = 3 
+Summary = THREATS 13.00 *MP* 
+Media_Consent = ? 
+Compl_Contact = 0 
+Complainant
+Surname = SELWAY 
+Given1 = CLAIRE 
+Gender = F 
+DateOfBirth = 1968-04-10T00:00:00 
+Description
+SelfDefinedRace ( OriginalValue = "WHT" ) = W01 
+Remarks = VICTIM 
+ComplainantPhoneNumber = 01380871946 
+ComplainantAddress
+StreetName = 19 ACRESHORT LN,STEEPLE ASHTON 
+Municipality = TROWBRIDGE 
+PostalCode = BA146HD 
+DispatchAddress
+StreetNumber = 19 
+StreetName = ACRESHORT LN 
+StreetDirection
+District = STEEPLE ASHTON 
+Municipality = TROWBRIDGE 
+PostalCode = BA146HD 
+Geocode1 = WILTS 
+Geocode2 = WWEST 
+Geocode3 = ED 
+Geocode4 = ED 
+Geocode5 = ED13 
+Latitude = 156607 
+Longitude = 390631 
+Remarks = DA RISK/MARAC NOMINAL 
+CompassID = P0000061973 
+Employees
+Employee ( ResponsibleForOccurrence = "true" ) 
+Involvement ( OriginalValue = "OIC" ) = OIC 
+EmployeeNumber = 70506 
+Employee ( ResponsibleForOccurrence = "false" ) 
+Involvement ( OriginalValue = "COP" ) = COP 
+EmployeeNumber = 70989 
+Employee ( ResponsibleForOccurrence = "false" ) 
+Involvement ( OriginalValue = "PRM" ) = PRM 
+EmployeeNumber = 70506 
+Employee ( ResponsibleForOccurrence = "false" ) 
+Involvement ( OriginalValue = "DOF" ) = DOF 
+EmployeeNumber = 70506 
+SupplementaryPeople
+SupplementaryPerson
+Involvement ( OriginalValue = "SUS" DefaultValue = "OTH" ) = SUS 
+Person
+Surname = WATSON-ARNOLD 
+Given1 = TYLER 
+Gender = M 
+DateOfBirth = 1998-07-23T00:00:00 
+Description
+Weight = 0 
+Age1 = 0 
+Age2 = 0 
+Weight2 = 0 
+SupplementaryPerson
+Involvement ( OriginalValue = "VIC" DefaultValue = "OTH" ) = VIC 
+Person
+Surname = BARLOW 
+Given1 = BILLY 
+Gender = M 
+DateOfBirth = 2001-01-28T00:00:00 
+Description
+Weight = 0 
+Age1 = 0 
+Age2 = 0 
+Weight2 = 0 
+SupplementaryPerson
+Involvement ( OriginalValue = "OTH" DefaultValue = "OTH" ) = OTH 
+Person
+Surname = SELWAY 
+Given1 = BETH 
+Gender = F 
+DateOfBirth = 2000-05-29T00:00:00 
+Description
+Weight = 0 
+Age1 = 0 
+Age2 = 0 
+PhoneNo1 = 07456228713 
+Weight2 = 0 
+Narratives
+Narrative
+Text = 
+RP'S DAUGHTER'S EX-BOYFRIEND HAS BEEN CALLING AND MESSAGING THE RP'S FOSTER SON AND BEING THREATENING
+Timestamp = 2025-02-25T10:32:53 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:32:54 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+FOSTER SON IS BILLY BARLOW PREVIOUSLY DUNCOMBE 28/01/2001 RESIDING AT THE ABOVE ADDRESS
+Timestamp = 2025-02-25T10:34:01 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:34:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+SUSPECT TYLER WATSON ARNOLD HE IS 26 YEARS OLDAND LIVES IN CHINS COURT IN WARMINSTER WITH HIS MUM AND UNCLE
+Timestamp = 2025-02-25T10:35:11 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:35:13 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = THE SUSPECT IS ALSO THREATENING TO GO TO THE IP'S MUMS ADDRESS 
+Timestamp = 2025-02-25T10:35:38 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+SAYS HE HAS A HISTORY OF VIOLENCE AND TOLD THE IP TO SEARCH HIS NAME IN STOKE ON TRENT
+Timestamp = 2025-02-25T10:35:51 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:35:53 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = RP BELIEIVES HE WOULD GO TO THE ADDRESS 
+Timestamp = 2025-02-25T10:36:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+THE SUSPECT WAS DATING BETH IS WHO THE RP'S DAUGHTER AND HE TOLD HER THAT HE HAD A GUN UNDER THE BED
+Timestamp = 2025-02-25T10:36:29 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:36:30 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = HE HAS ALSO SENT PHOTOS OF THE IP'S SISTER MAISY PRESTON IN AN ALLEYWAY 
+Timestamp = 2025-02-25T10:37:27 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = RP STATES THE SUSPECT HASN;T SPOKEN TO HER BEFORE 
+Timestamp = 2025-02-25T10:37:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:37:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Transfer To WWEST From Terminal WPDCTXHQ70 Control GRADE Priority 
+Timestamp = 2025-02-25T10:37:41 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = HE KEPT ASKING THE IP TO MEET HIM LAST NIGHT AS HE WANTED TO FIGHT 
+Timestamp = 2025-02-25T10:38:06 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = SUSPECT HAS ASLO THREATENED TO SPRAY "RAPIST" ACROSS THE VILLAGE 
+Timestamp = 2025-02-25T10:38:29 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:38:30 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+IP HAS ASKED HIM TO STOP MESSAGING HIM BUT HE HAS CONTINUED SENDING A NUMBER OF MESSAGE
+Timestamp = 2025-02-25T10:39:20 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:39:21 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = LIVECELL ADVISED DUE TO 'GUN' MENTIONED 
+Timestamp = 2025-02-25T10:39:24 
+User = 7079 
+Workstation = WESPOL-W1 
+Category = SUPERVISOR 
+Narrative
+Text = PENDING FIM RETURN TO ADVISE 
+Timestamp = 2025-02-25T10:39:24 
+User = 7079 
+Workstation = WESPOL-W1 
+Category = SUPERVISOR 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:39:47 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Transfer Accepted At Terminal WESPOL-W11 For Control 
+Timestamp = 2025-02-25T10:40:14 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = IP HAS AUTISM AND PERSONALITY DISORDER 
+Timestamp = 2025-02-25T10:40:32 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = HE IS ALSO GOING THROUGH A ROUGH PATCH WITH HIS MENTAL HEALTH 
+Timestamp = 2025-02-25T10:40:46 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:40:47 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = IP STATES HE WOULD CURRENTLY DEEM HIMSELF AS VULNERABLE 
+Timestamp = 2025-02-25T10:41:08 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = HE THINKS HE IS BEING PERSONALLY TARGETTED 
+Timestamp = 2025-02-25T10:41:21 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:41:23 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Q: IS THE VICTIM FRIGHTENED? 
+Timestamp = 2025-02-25T10:41:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: YES 
+Timestamp = 2025-02-25T10:41:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: DUE TO HIS REPUTATION OF BEING VIOLENT 
+Timestamp = 2025-02-25T10:41:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = WT12=- WILL TAKE A LOOK 
+Timestamp = 2025-02-25T10:41:52 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = REMARKS 
+Narrative
+Text = 
+Q: HAS THE SUSPECT ENGAGED IN HARASSMENT/STALKING ON PREVIOUS OCCASIONS EITHER IN PERSON, THROUGH ANOTHER PARTY OR ONLINE?
+Timestamp = 2025-02-25T10:41:55 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: NO 
+Timestamp = 2025-02-25T10:41:55 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: RP IS UNSURE IF HE HAS DONE ANYTHING LIKE THIS BEFORE 
+Timestamp = 2025-02-25T10:41:55 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = MALE NO TRACE PNC 
+Timestamp = 2025-02-25T10:42:11 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = RP - IP'S FOSTER MUM - THINKS HE HAS DONE THIS TO A PREVIOUS GIRLFRIEND OF HIS 
+Timestamp = 2025-02-25T10:42:14 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:42:14 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Q: HAS THE SUSPECT EVER DAMAGED YOUR PROPERTY? 
+Timestamp = 2025-02-25T10:42:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: NO 
+Timestamp = 2025-02-25T10:42:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: NOT IP'S 
+Timestamp = 2025-02-25T10:42:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = 
+MALE TRACE ON NICHE - WM FOR WEAPONS, SILVER LOCKING FOLDING KNIFE APPROX 5CM BLADE, BOLO FLAG - VERY ANTI-POLICE
+Timestamp = 2025-02-25T10:43:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+BETHANY SELWAY IS THE RP'S DAUGHTER AND THE IP STATES THAT THE SUSPECT SMASHED ALL HER DOORS WHEN THEY WERE TOGETHER
+Timestamp = 2025-02-25T10:43:14 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = STATE POLICE WERE CALLED TO THE FLAT DUE TO HIS BEHAVIOUR 
+Timestamp = 2025-02-25T10:43:29 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = BETH ALSO HAD BRUSIES 
+Timestamp = 2025-02-25T10:43:33 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:43:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Q: YOU HAVE ANSWERED NO, PLEASE RECORD THE DETAILS. 
+Timestamp = 2025-02-25T10:43:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: 
+Timestamp = 2025-02-25T10:43:36 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = WT47 On-Route to Incident S05 
+Timestamp = 2025-02-25T10:44:27 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = WT47 MOBILISED FROM ASSIGNMENT FORM 
+Timestamp = 2025-02-25T10:44:27 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = 
+IP WENT ON THE SCHOOL RUN WITH THE RP TODAY AND THE SUSPECT WAS THEN MESSAGING HIM ABOUT GOING TO A SCHOOL
+Timestamp = 2025-02-25T10:44:58 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:44:59 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+Q: DOES THE SUSPECT REPEATEDLY VISIT THE VICTIM AT WORK, HOME ETC. MORE THAN THREE TIMES A WEEK? HAS THE SUSPECT LOITERED AROUND THE VICTIM'S HOME, WORKPLACE ETC?
+Timestamp = 2025-02-25T10:46:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: NO 
+Timestamp = 2025-02-25T10:46:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = 
+NO FIREARM OCCURRENCES RECORDED ON NICHE, INTEL 54190035694 REPORTS A KNIFE IS LOCATED NEAR TO THE FRONT DOOR OF THE PORPERTY - FOR OFFICER SAFETY
+Timestamp = 2025-02-25T10:46:07 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+Q: HAS THE SUSPECT MADE ANY THREATS OF PHYSICAL OR SEXUAL VIOLENCE IN THE CURRENT HARASSMENT/STALKING INCIDENT?
+Timestamp = 2025-02-25T10:46:17 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: YES 
+Timestamp = 2025-02-25T10:46:17 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: THREATS OF PHYSICAL VIOLENCE 
+Timestamp = 2025-02-25T10:46:17 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = 
+Q: HAS THE SUSPECT INVOLVED OR TARGETED ANY THIRD PARTY SINCE THE HARASSMENT/STALKING BEGAN (FOR EXAMPLE FRIENDS,FAMILY,CHILDREN, COLLEAGUES, PARTNERS OR NEIGHBOURS OF THE VICTIM)?
+Timestamp = 2025-02-25T10:46:37 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: YES 
+Timestamp = 2025-02-25T10:46:37 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: CONTACTING OTHER PEOPLE FRIENDS/FAMILY 
+Timestamp = 2025-02-25T10:46:37 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = 
+Q: HAS THE SUSPECT ACTED VIOLENTLY TOWARDS PEOPLE WITHIN THE CURRENT HARASSMENT/STALKING INCIDENT?
+Timestamp = 2025-02-25T10:46:45 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: NO 
+Timestamp = 2025-02-25T10:46:45 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = Q: HAS THE SUSPECT PERSUADED OTHER PEOPLE TO HELP THEM? 
+Timestamp = 2025-02-25T10:47:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = A: YES 
+Timestamp = 2025-02-25T10:47:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = A: SISTER THREATENED A FMAILY MEMBER 
+Timestamp = 2025-02-25T10:47:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = ANSWER 
+Narrative
+Text = Final question automatically answered 
+Timestamp = 2025-02-25T10:47:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = QUESTION SET 
+Narrative
+Text = THERE IS ALSO A 3 YEAR OLD AT THE ADDRESS WHO IS UNDER A SGO 
+Timestamp = 2025-02-25T10:47:09 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:47:10 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = PND - KNOWN ONLY TO WILTS 
+Timestamp = 2025-02-25T10:48:10 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:48:26 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+THE RP WILL BE GOING TO PICK UP THEIR CHILD FROM SCHOOL AT 12 AND WILL BE TAKING THE IP WITH THEM
+Timestamp = 2025-02-25T10:49:25 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = OTHERWISE THEY ARE AVAILABLE TO SEE OFFICERS 
+Timestamp = 2025-02-25T10:49:33 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:49:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 25/02/25 10:49 54LIWI01 NE57/0013 JP400M02 547878 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 23 PNC POSSIBLES (SIS LINK UNAVAILABLE) 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = SRCH WATSON-ARNOLD/TYLER:23071998::: 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = OI:1 AS:13 IP:2 DNA:2 DH:9 AL:7 AB:1 RECORD 1 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = WATSON-ARNOLD, TYLER PNCID 14/501973K 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 23/07/98 STAFFORD CRO 202061/14X 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = MALE WHITENORTHEURO 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = TATT 14 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = *WEAPONS *MENTL HLTH *SUICIDAL *SELF-HARM *DRUGS 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = DNA E+W NOT REQUIRED DNA PROFILE HELD ON NDNAD FOR E+W 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = LAST KNOWN ADDRESS AS AT 06/09/24 (HOME) 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 14B CHINNS COURT MARKET PLACE 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = WARMINSTER WILTSHIRE 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = BA12 9AN (54EE) 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = RECORD LAST UPDATED 06/09/24 19:47 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = PAGE OI.... HELP .... ABANDON TRANSACTION? N.. 
+Timestamp = 2025-02-25T10:50:09 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = APOLS, ABOVE SHOULD BE IN BLUE 
+Timestamp = 2025-02-25T10:50:26 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+TO CLARIGY - RP IS A CLARE SELWAY HOWEVER IP BILLY DID ALSO SPEAK DURING THE CALL. THE RP'S DAUGHTER BETHANY SELWAY HAS RECENTLY BEEN IN A RELATIONSHIP WITH THE SUSPECT
+Timestamp = 2025-02-25T10:50:52 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = OI IS FOR COUNTY LINES 
+Timestamp = 2025-02-25T10:51:06 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+THE SUSPECT IS NOW CONTACTING THE IP. THE SISTER WHO HE SENT PHOTOS OF IS A MAISY PRESTON WHO IS HEAVILY PREGNANT AND SHE IS THE IP'S BIOLOGICAL SISTER
+Timestamp = 2025-02-25T10:51:34 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+THE RP IS NOT AWARE OF MAISY AND THE SUSPECT EVER HAVING ANY RELATIONSHIP OR CONTACT
+Timestamp = 2025-02-25T10:51:56 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:51:57 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = FIM ADVISED, WILL VIEW 
+Timestamp = 2025-02-25T10:52:20 
+User = 7079 
+Workstation = WESPOL-W1 
+Category = SUPERVISOR 
+Narrative
+Text = 
+NO PREVIOUS FIREARMS ARRESTS ON PNC - ARRESTS FOR OFFENSIVE WEAPON (HAMMER) AND BLADED ARTICLE
+Timestamp = 2025-02-25T10:52:25 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = - 
+Timestamp = 2025-02-25T10:52:46 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+FIM - NOTED. SUITABLE FOR CPT. NOTHING TO SUPPORT THE MALES CLAIM HE IS IPO A VIABLE FIREARM
+Timestamp = 2025-02-25T10:52:47 
+User = 1707 
+Workstation = WESPOL-W2 
+Category = SUPERVISOR 
+Narrative
+Text = PNC WARNING FOR WEAPONS - FOUND IN POSSESSION OF A LOCK KNIFE 
+Timestamp = 2025-02-25T10:53:03 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = 
+RP IS ALSO VERY COCNERNED THAT THIS SUSPECT HAS ALSO FOLLOWED THEM TO THE SCHOOL AS HE WAS MESSAGING THEM ABOUT THE IP GOING TO A SCHOOL SHORTLY AFTER THEY RETURNED
+Timestamp = 2025-02-25T10:53:10 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = THESE MESSAGES HAVE ALL BEEN SENT OVER FACEBOOK MESSENGER 
+Timestamp = 2025-02-25T10:53:28 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:53:29 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+TYLER WATSON-ARNOLD TRACE ON NICHE, WARNINGS FOR DR, SU, SH, MH, WE (KNIFE) FLAGS FOR DA PERPETRATOR X2
+Timestamp = 2025-02-25T10:54:43 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = PREVIOUS CALLS VIEWED 19 ACRESHORT LN 01380871946 
+Timestamp = 2025-02-25T10:54:47 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = NO RECENT RELEVANT CALLS 
+Timestamp = 2025-02-25T10:55:06 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:55:07 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = SOP(s) VIEWED MARKER\19 Acre Short Lane.HTM 
+Timestamp = 2025-02-25T10:55:09 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = SOP IS OUT OF DATE AND DOES NOT APPEAR TO RELATE TO THIS SUSPECT 
+Timestamp = 2025-02-25T10:55:50 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T10:55:51 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = NO FIREARM RELATED OCCURRENCE ON NICHE 
+Timestamp = 2025-02-25T10:56:37 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = PND- WATSON-ARNOLD KNOWN TO WILTS, BTP, STAFFS & A&S 
+Timestamp = 2025-02-25T10:58:13 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = NO FIREARMS RELATED ASSOCIATIONS ON OFA PND RECORDS 
+Timestamp = 2025-02-25T11:00:19 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = Person Search WATSON-ARNOLD TYLER 
+Timestamp = 2025-02-25T11:01:01 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = Person Select WATSON-ARNOLD TYLER 
+Timestamp = 2025-02-25T11:01:16 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = 
+POL Person ID:301737 LAST NAME:WATSON-ARNOLD First Name:TYLER DOB:23/07/1998 Gender:M Relation Type:SUSPECT
+Timestamp = 2025-02-25T11:01:18 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T11:01:21 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = 
+NICHE SEARCHES SHOW IP BILLY LIAM GEORGE DUNCOMBE 28/01/2001RESIDING AT THE ABOVE ADDRESS
+Timestamp = 2025-02-25T11:05:35 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = CAD REMARKS 
+Narrative
+Text = * 
+Timestamp = 2025-02-25T11:05:35 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = CAD REMARKS 
+Narrative
+Text = WM FOR 1X WEAPONS (FOLDING KNIFE) 
+Timestamp = 2025-02-25T11:05:35 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = CAD REMARKS 
+Narrative
+Text = FLAG FOR 1X BOLO (ANTI-POLICE DUE TO PREVIOUS ENCOUNTERS) 
+Timestamp = 2025-02-25T11:05:35 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = CAD REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T11:05:44 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = Person Search BARLOW BILLY 
+Timestamp = 2025-02-25T11:07:21 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = 
+POL LAST NAME:BARLOW First Name:BILLY DOB:28/01/2001 Home Address:19 ACRESHORT LANE STEEPLE ASHTON, BA14 6HD Gender:M Relation Type:VICTIM
+Timestamp = 2025-02-25T11:08:24 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = ** 
+Timestamp = 2025-02-25T11:08:29 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = REMARKS 
+Narrative
+Text = CREATED SUPPLEMENTARY DATA THRIVE 
+Timestamp = 2025-02-25T11:17:02 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = SYSTEM 
+Narrative
+Text = 
+(THRIVE) THREAT  : KNOWN MALE SUSPECT HAS BEEN CONTACTING THE IP THREATENING VIOLENCE AND SAYING THEY WILL GO THEIR MOTHERS ADDRESS
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) HARM  : EMOTIONAL HARM CAUSED TO THE IP WHO IS FRIGHTENED OF THE SUSPECT AND DOES BELIEVE HE MAY HURT HIM OR HIS FAMILY
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) RISK  : THIS IS MEDIUM RISK - THE SUSPECT KNOWS WHERE THE IP LIVES AND HAS BEEN SENDING HIM PHOTOS OF HIS FAMILY MEMBERS. THIS MAY ESCALATE FURTHER SHOULD HE ATTEND THE
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = ADDRESS 
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) INVESTIGATION  : NICHE AND PNC CHECKS. PERSONS TAB. IP HAS ALL THE MESSAGES WHICH WERE SENT OVER FACEBOOK MESSENGER
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) VULNERABILITY  : I WOULD DEEM THE IP AS VULNERABLE, THEY ARE RECEIVING SUPPORT FOR THEIR MENTAL HEALTH AND STATED THAT THIS IS IMPACTING IT. THEY WOULD DEEM THEMSELF AS
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = VULNERABLE AND BELIEVE THEY ARE BEING TARGETTED 
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) ENGAGEMENT  : LOG NUMBER PASSED. THE RP AND IP WILL NEED TO LEAVE THE HOUSE AT 12 TO PICK UP THE IP'S GRANDDAUGHTER. THEY CAN BE CONTACTED ON THEIR LANDLINE. ADVISED UNIT
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = DISPATCHED 
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = 
+(THRIVE) PREVENTION  : 999/101 ADVICE PASSED. ADVISED TO KEEP DOORS AND WINDOWS LOCKED
+Timestamp = 2025-02-25T11:17:03 
+User = 70989 
+Workstation = WPDCTXHQ70 
+Category = THRIVE 
+Narrative
+Text = WT40 - MADE CONTACT WITH IP, ATTENDING AT 1300 
+Timestamp = 2025-02-25T11:17:18 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = REMARKS 
+Narrative
+Text = WT47 Available, Resuming Patrol S02 
+Timestamp = 2025-02-25T11:18:04 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = SYSTEM 
+Narrative
+Text = 
+NOTED ABOVE, PLEASE ENSURE FULL DEBRIEF AROUND FIREARM, HAS IT BEEN SEEN, HOW OLD IS THE INFORMATION ETC AND ENSURE INTEL SUBMITTED
+Timestamp = 2025-02-25T11:29:06 
+User = 7878 
+Workstation = WESPOL-W6 
+Category = CAD REMARKS 
+Narrative
+Text = WT40 AS 
+Timestamp = 2025-02-25T11:51:58 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = SYSTEM 
+Narrative
+Text = WT47 DS 
+Timestamp = 2025-02-25T11:52:40 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = SYSTEM 
+Narrative
+Text = REQUEST TO SEND INCIDENT DETAILS TO NICHE MADE 
+Timestamp = 2025-02-25T12:31:30 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = SYSTEM 
+Narrative
+Text = Case reference updated to 54250023913 
+Timestamp = 2025-02-25T12:41:08 
+User = NICHE 
+Workstation = CAD 
+Category = SYSTEM 
+Narrative
+Text = WT40 MOBILISED FROM ASSIGNMENT FORM 
+Timestamp = 2025-02-25T13:44:13 
+User = 7183 
+Workstation = WESPOL-W9 
+Category = SYSTEM 
+Narrative
+Text = WT40 At Scene of Incident S06 
+Timestamp = 2025-02-25T13:52:41 
+User = ARLS 
+Workstation = ARLSERVER 
+Category = SYSTEM 
+Narrative
+Text = WT40- CC AIO 
+Timestamp = 2025-02-25T14:32:13 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = REMARKS 
+Narrative
+Text = WT40 Available, Resuming Patrol S02 
+Timestamp = 2025-02-25T14:32:21 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = Transfer To WWEST From Terminal WESPOL-W11 Action GRADE Priority 
+Timestamp = 2025-02-25T14:32:21 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = Incident referred to WWEST for possible closure 
+Timestamp = 2025-02-25T14:32:21 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = Transfer Accepted At Terminal WESPOL-W11 For Action 
+Timestamp = 2025-02-25T14:32:58 
+User = 70705 
+Workstation = WESPOL-W11 
+Category = SYSTEM 
+Narrative
+Text = AFTERNOON, 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = INVOLVED PARTIES: 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = IP: BILLY BARLOW, 28/01/2001, 19 ACRESHORT, TROWBRIDGE, BA146HD, 07392151761 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+RP/IP'S FOSTER MOTHER: CLAIRE SELWAY, 10/03/1968, 19 ACRESHORT, TROWBRIDGE. BA147HD, 01380871946
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+RP'S DAUGHTER: BETH SELWAY, 29/05/2000, 11 WILD HOUSE, TOLLGATE ROAD, SALISBURY, SP12JD, 07456228713
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = SUSPECT: TYLER WATSON ARNOLD, 23/07/1998, NFA 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = CIRCUMSTANCES: 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+ON 24TH FEBRUARY 2025, TYLER HAS MESSAGED BILLY SAYING THAT HE NEEDS TO STAY AWAY FROM HIS CHILD (WHO HE HAD WITH BETH AS THEY ARE EX PARTNERS). THIS IS BECAUSE ALLEGEDLY BILLY
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+RAPED BETH 4 YEARS AGO THAT WAS NEVER TOLD TO POLICE (UNTIL NOW). THERE WERE THEN MULTIPLE MESSAGES BEING SENT TO AND FRO FROM TYLER AND BILLY EXCHANGING NASTY WORDS. DURING THESE
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+MESSAGES THERE ARE MENTIONS FROM TYLER THAT HE WANTS TO HAVE A FIGHT WITH BILLY AT BILLY'S MUMS HOUSE TO 'SORT THINGS OUT'. THIS DOESN'T END UP HAPPENING.
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+25TH FEBRUARY 2025 BILLY HAS MESSAGED TYLER TO SAY THAT HE'S OUTSIDE HIS MUMS (ALMOST GOADING TYLER INTO MEETING TO HAVE THIS FIGHT), WHICH DOES NOT HAPPEN. DURING THESE MESSAGES,
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+BILLY HAS ASKED TYLER TO STOP MESSAGING HIM HOWEVER THEN CONTINUES TO ENGAGE WITH TYLER WHEN HE RESPONDS.
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+I HAVE CONSIDERED COMMON ASSAULT FROM TYLER TO BILLY, HOWEVER THERE IS NO 'IMMEDIATE' APPREHENSION OF VIOLENCE DUE TO THEIR LOCATIONS ETC. BILLY HAS THEN TURNED UP AT THE ADDRESS
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+TYLER MENTIONED AND STATED HE WAS THERE SO I DO NOT FEEL THERE IS A REAL FEAR FOR THIS VIOLENCE TO HAPPEN FROM BILLY AS HE HAS TOLD TYLER WHERE HE IS TO HAVE THIS 'SORTED OUT'.
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+I HAVE ALSO CONSIDERED HARASSMENT WITH FEAR OF VIOLENCE. HOWEVER, BILLY HAS REPLIED TO THE MESSAGES, CONTINUING TO ENGAGE WITH TYLER WHILST USING SIMILAR FOUL LANGUAGE SO DO NOT
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = THINK THE THRESHOLD IS MET. 
+Timestamp = 2025-02-25T15:49:01 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+THERE IS MENTION THAT TYLER HAS A FIREARM UNDER HIS BED. I HAVE SPOKEN WITH BETH (TYLER'S EX PARTNER, WHO ALLEGEDLY TOLD BILLY AND CLAIRE THIS INFO) AND SHE STATES THAT IT IS FALSE
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+AND SHE HAS NOT SEEN THIS HERSELF AND HAS DEFINITELY NOT SAID THIS TO OTHERS SO UNSURE HOW THIS CAME TO LIGHT. I WILL SUBMIT INTEL FOR THIS.
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+WHILST ON THE PHONE WITH BETH SHE SAID THAT SHE WAS IN FACT RAPED BY BILLY SEVERAL YEARS AGO AND ALTHOUGH WASN'T IN THE HEADSPACE TO TALK ABOUT IT THEN, IS NOW IN A POSITION TO
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+TALK AND PROVIDE A STATEMENT ABOUT IT. SHE SAYS SHE IS FREE THIS WEEK AND NEXT WEEK TO HAVE A STATEMENT TAKEN.
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = 
+WITH THIS, PLEASE CAN A SEPARATE NICHE BE CREATED FOR A SEXUAL OFFENCE OCCURRENCE FROM BETH AGAINST BILLY FOR RAPE.
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = MANY THANKS 
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = PC ROSS, 70506 
+Timestamp = 2025-02-25T15:49:12 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = UNIT REMARK 
+Narrative
+Text = Person Search SELWAY BETH 
+Timestamp = 2025-02-25T16:34:26 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = SYSTEM 
+Narrative
+Text = Reason for failure : Arrival NO UNIT : No Unit Available - Commited 
+Timestamp = 2025-02-25T16:36:13 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = DISPOSE 
+Narrative
+Text = Call Resulted (SUP) Disposal code: RMS CRIME,CR27,CR02, , , 
+Timestamp = 2025-02-25T16:36:14 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = SYSTEM 
+Narrative
+Text = 
+LOG TO CLOSE AS X1 THREATS. LOG TO CREATE A SEPERATE NICHE FOR SEXUAL OFFENCES. IP BEING BETH AND SUSPECT BEING BILLY
+Timestamp = 2025-02-25T16:36:14 
+User = 70439 
+Workstation = WESPOL-W5 
+Category = DISPOSE 
+Narrative
+Text = Transfer Accepted At Terminal WESPOL-W3 Transfer For Closure 
+Timestamp = 2025-02-25T17:13:59 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = SYSTEM 
+Narrative
+Text = Disposal code: ,'RMS CRIME','CR27','CR02' 
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Narrative
+Text = # Arrests # Cautions # Reports 
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Narrative
+Text = Handling Officer 70506 
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Narrative
+Text = Qualifiers,YOUTH RELATED 
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Narrative
+Text = 
+LOG TO CLOSE AS X1 THREATS. LOG TO CREATE A SEPERATE NICHE FOR SEXUAL OFFENCES. IP BEING BETH AND SUSPECT BEING BILLY
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Narrative
+Text = POL-20250225-0097 HAS BEEN DISPOSED 
+Timestamp = 2025-02-25T17:14:20 
+User = 8609 
+Workstation = WESPOL-W3 
+Category = DISPOSE 
+Qualifiers
+Qualifier
+Type = DISPQUALIF 
+Code = 04 
+Description = YOUTH RELATED 
+Relations
+Relation
+Ref = 54250023913 
+Type = CASE # 
+Qualifier = ISR 
+Comment = comment value 
+Description = OCN 54250023913 set as case ref 
+ModDateTime = 2025-02-25T12:41:08 
+Relation
+Ref = 54250023913 
+Type = EXTERNAL 
+Qualifier = NICHE 
+Comment = DATA SENT 25/02/2025 12:41:08 
+Description = NICHE SUPPLIED OCN [54250023913] 
+ModDateTime = 2025-02-25T12:41:08 
+Relation
+Ref = 301737 
+Type = PERSON 
+Qualifier = SUSPECT 
+Comment
+Description = TYLER WATSON-ARNOLD (DOB : 23/07/1998) 
+ModDateTime = 2025-02-25T11:01:19 
+Relation
+Ref = 718945 
+Type = PERSON 
+Qualifier = VICTIM 
+Comment
+Description = BILLY BARLOW (DOB : 28/01/2001) 
+ModDateTime = 2025-02-25T11:08:24 
+Relation
+Ref = 718985 
+Type = PERSON 
+Qualifier = OTHER 
+Comment
+Description = BETH SELWAY (DOB : 29/05/2000) 
+ModDateTime = 2025-02-25T16:35:16 
+
+       
+
