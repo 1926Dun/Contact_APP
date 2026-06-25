@@ -345,7 +345,7 @@ function renderCandidate(c, index, withCheckbox) {
       <strong>${esc(c.offence_title)}</strong>
     </div>
     <p class="candidate-legislation">${esc(c.legislation)}${c.classification_code ? " [" + esc(c.classification_code) + "]" : ""}${c.notifiable ? " — Notifiable" : ""}</p>
-    <p>${esc(c.rationale)}</p>`;
+    ${renderRationale(c.rationale)}`;
 
   if (c.points_to_prove && c.points_to_prove.length) {
     html += `<details><summary>Points to prove (${c.points_to_prove.length})</summary>
@@ -420,6 +420,45 @@ function renderReport(r) {
   }
 
   html += `</div>`;
+  return html;
+}
+
+function renderRationale(text) {
+  const stepPattern = /Step \d+[:\s]*[A-Z]/;
+  if (!stepPattern.test(text)) {
+    return `<p>${esc(text)}</p>`;
+  }
+
+  // Split on "Step N" boundaries, keeping the delimiter
+  const parts = text.split(/(Step \d+)/);
+  let preamble = "";
+  const steps = [];
+  let i = 0;
+
+  // Collect any text before the first "Step N"
+  if (parts[0] && !parts[0].match(/^Step \d+$/)) {
+    preamble = parts[0].trim();
+    i = 1;
+  }
+
+  // Pair up "Step N" with its following text
+  for (; i < parts.length; i += 2) {
+    const label = parts[i] || "";
+    const body = (parts[i + 1] || "").replace(/^[\s:–—-]+/, "").trim();
+    if (label && body) {
+      steps.push({ label, body });
+    }
+  }
+
+  let html = "";
+  if (preamble) html += `<p>${esc(preamble)}</p>`;
+  if (steps.length) {
+    html += `<ul class="rationale-steps">`;
+    for (const s of steps) {
+      html += `<li><strong>${esc(s.label)}:</strong> ${esc(s.body)}</li>`;
+    }
+    html += `</ul>`;
+  }
   return html;
 }
 
