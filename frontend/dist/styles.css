@@ -262,8 +262,18 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
 .ptp-notmet td:nth-child(2) { color: #721c24; font-weight: 600; }
 .ptp-unclear td:nth-child(2) { color: #856404; font-weight: 600; }
 
+/* Counting rules panel */
+.counting-rules { border-left: 4px solid var(--elevation-gold); }
+.counting-rules h3 { color: var(--police-navy); }
+.counting-rules-note { font-size: 0.8rem; color: #666; font-style: italic; margin-bottom: 1rem; }
+.counting-rule { margin-bottom: 1rem; }
+.counting-rule:last-child { margin-bottom: 0; }
+.counting-rule h4 { font-size: 0.9rem; color: var(--police-navy); margin-bottom: 0.25rem; }
+.counting-rule p { font-size: 0.9rem; line-height: 1.5; margin: 0; }
+.result-card-action { padding: 0 0 0.5rem; }
+
 /* Report */
-.btn-report { margin-top: 1rem; display: block; }
+.btn-report { margin-top: 0.5rem; display: block; }
 .report-header h2 { color: var(--police-navy); font-size: 1.2rem; }
 .report-selected { border-left: 4px solid var(--action-teal); }
 .report-not-selected { border-left: 4px solid #ccc; opacity: 0.85; }

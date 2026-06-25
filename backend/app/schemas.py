@@ -40,6 +40,18 @@ class CandidateCrime(BaseModel):
     guidance_applied: list[str] = Field(default_factory=list)
 
 
+class CountingRulesAnalysis(BaseModel):
+    one_crime_per_victim: str = Field(
+        description="Apply HOCR One Crime per Victim rule: identify each victim and the offender(s), state how many crimes would be counted and why"
+    )
+    finished_incident_rule: str = Field(
+        description="Apply HOCR Finished Incident Rule: state whether the log reports a finished sequence of acts, and what that means for the count"
+    )
+    principal_crime: str = Field(
+        description="Apply HOCR Principal Crime Rule: identify the most serious offence from the candidates and state why it is the principal crime for recording purposes"
+    )
+
+
 class Assessment(BaseModel):
     metadata: LogMetadata
     summary: str
@@ -48,6 +60,7 @@ class Assessment(BaseModel):
     candidates: list[CandidateCrime] = Field(
         description="Candidate crimes ordered by certainty, highest first"
     )
+    counting_rules: CountingRulesAnalysis
 
 
 class DocumentVersion(BaseModel):

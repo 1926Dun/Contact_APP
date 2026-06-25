@@ -162,6 +162,12 @@ under NSIR, name it.
 alternate, schools protocol, NFIB fraud routing).
 
 Order candidates by certainty, highest first.
+
+6. **counting_rules** — after listing all candidates, explicitly apply each of the three HOCR counting rules to this log:
+
+   - **one_crime_per_victim**: Identify each victim and the offender(s). State how many crimes would be counted under this rule and why (e.g. one victim, one offender group = one crime counted per offence type, but only one recording if the finished incident rule and principal crime rule collapse them).
+   - **finished_incident_rule**: State whether the log reports a finished sequence of acts between the same parties reported together in a single report. If yes, state that the sequence counts as one crime for recording purposes. If acts span separate incidents, say so.
+   - **principal_crime**: From the candidates above, identify the most serious offence. State which offence it is, why it is the most serious (by reference to the HOCR severity hierarchy or penalty), and that this is the offence that would be recorded as the principal crime.
 """
 
 

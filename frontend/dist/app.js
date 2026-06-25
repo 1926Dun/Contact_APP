@@ -325,8 +325,33 @@ function renderAssessment(data) {
     for (let i = 0; i < a.candidates.length; i++) {
       html += renderCandidate(a.candidates[i], i, true);
     }
-    html += `<button id="generate-report-btn" class="btn-primary btn-report">Generate report</button>`;
     html += `</div>`;
+  }
+
+  if (a.counting_rules) {
+    const cr = a.counting_rules;
+    html += `<div class="result-card counting-rules">
+      <h3>HOCR counting rules</h3>
+      <p class="counting-rules-note">These rules apply to the final recording decision, not to the candidate list above.</p>
+      <div class="counting-rule">
+        <h4>One Crime per Victim</h4>
+        <p>${esc(cr.one_crime_per_victim)}</p>
+      </div>
+      <div class="counting-rule">
+        <h4>Finished Incident Rule</h4>
+        <p>${esc(cr.finished_incident_rule)}</p>
+      </div>
+      <div class="counting-rule">
+        <h4>Principal Crime Rule</h4>
+        <p>${esc(cr.principal_crime)}</p>
+      </div>
+    </div>`;
+  }
+
+  if (a.candidates.length) {
+    html += `<div class="result-card-action">
+      <button id="generate-report-btn" class="btn-primary btn-report">Generate report</button>
+    </div>`;
   }
 
   return html;
