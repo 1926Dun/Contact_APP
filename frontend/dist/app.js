@@ -397,7 +397,7 @@ function renderCandidate(c, index, withCheckbox) {
     <div class="candidate-header">`;
 
   if (withCheckbox) {
-    html += `<input type="checkbox" class="candidate-checkbox" data-index="${index}" checked>`;
+    html += `<input type="checkbox" class="candidate-checkbox" data-index="${index}">`;
   }
 
   html += `<span class="certainty-badge certainty-${band}">${c.certainty}%</span>

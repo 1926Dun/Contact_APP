@@ -277,8 +277,8 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--authority-bl
 .principal-badge {
   font-size: 0.7rem;
   font-weight: 600;
-  background: #0a2342;
-  color: #c8a24b;
+  background: #c8a24b;
+  color: #0a2342;
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
   letter-spacing: 0.03em;
