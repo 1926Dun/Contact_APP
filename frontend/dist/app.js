@@ -317,7 +317,7 @@ function renderAssessment(data) {
     html += `<div class="result-card"><h3>Log details</h3><ul>`;
     if (m.reference_number) html += `<li>Reference: ${esc(m.reference_number)}</li>`;
     if (m.date) html += `<li>Date: ${esc(m.date)}</li>`;
-    if (m.times && m.times.length) html += `<li>Time(s): ${m.times.map(esc).join(", ")}</li>`;
+    if (m.times && m.times.length) { const t = m.times; html += `<li>Time: ${t.length > 1 ? esc(t[0]) + " – " + esc(t[t.length-1]) : esc(t[0])}</li>`; }
     if (m.location) html += `<li>Location: ${esc(m.location)}</li>`;
     html += `</ul></div>`;
   }
@@ -447,7 +447,7 @@ function renderReport(r) {
   html += `<div class="result-card"><h3>Log details</h3><ul>`;
   if (m.reference_number) html += `<li>Reference: ${esc(m.reference_number)}</li>`;
   if (m.date) html += `<li>Date: ${esc(m.date)}</li>`;
-  if (m.times && m.times.length) html += `<li>Time(s): ${m.times.map(esc).join(", ")}</li>`;
+  if (m.times && m.times.length) { const t = m.times; html += `<li>Time: ${t.length > 1 ? esc(t[0]) + " – " + esc(t[t.length-1]) : esc(t[0])}</li>`; }
   if (m.location) html += `<li>Location: ${esc(m.location)}</li>`;
   html += `</ul></div>`;
 
