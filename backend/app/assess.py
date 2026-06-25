@@ -4,6 +4,7 @@ import logging
 
 from .knowledge import get_knowledge
 from .llm import chat_structured
+from .principal_crimes import lookup as pc_lookup
 from .redact import RedactionResult, redact
 from .schemas import Assessment
 
@@ -294,6 +295,13 @@ def assess_log(
         {"role": "user", "content": f"Police log:\n\n{send_text}"},
     ]
     assessment = chat_structured(messages, Assessment)
+
+    # Programmatic override: authoritative lookup against the HOCR page 14 table.
+    # The LLM's is_principal_crime value is discarded; the table is the source of truth.
+    for candidate in assessment.candidates:
+        is_pc, max_sentence = pc_lookup(candidate.classification_code)
+        candidate.is_principal_crime = is_pc
+        candidate.principal_crime_max_sentence = max_sentence
 
     if r:
         assessment = _deredact_assessment(assessment, r)

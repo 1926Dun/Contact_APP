@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from .assess import assess_log
 from .db import get_db
 from .knowledge import get_knowledge, refresh_knowledge
+from .principal_crimes import cache_clear as _pc_cache_clear
 from .parse_file import extract_text, is_supported, SUPPORTED_EXTENSIONS
 from .report import generate_report
 from .schemas import Assessment, ReportRequest
@@ -40,6 +41,7 @@ async def knowledge_status():
 async def knowledge_refresh():
     """Re-ingest source documents after a Home Office update."""
     kb = refresh_knowledge()
+    _pc_cache_clear()
     return {"documents": kb.summary(), "refreshed": True}
 
 
