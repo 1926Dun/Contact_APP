@@ -1,8 +1,14 @@
+import json
+import logging
+
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel
 
+from .assess import assess_log
 from .db import get_db
 from .knowledge import get_knowledge, refresh_knowledge
+
+log = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api")
 
@@ -33,7 +39,37 @@ async def knowledge_refresh():
     return {"documents": kb.summary(), "refreshed": True}
 
 
-@router.post("/assess", response_model=LogResponse)
+async def _store_and_assess(content: str, source: str, filename: str | None):
+    """Store the log, run assessment, store result, return both."""
+    db = await get_db()
+    cursor = await db.execute(
+        "INSERT INTO logs (source, filename, text) VALUES (?, ?, ?)",
+        (source, filename, content),
+    )
+    log_id = cursor.lastrowid
+    await db.commit()
+
+    row = await db.execute("SELECT * FROM logs WHERE id = ?", (log_id,))
+    log_row = dict(await row.fetchone())
+
+    log.info("Running assessment for log %d", log_id)
+    assessment = assess_log(content)
+
+    result_json = assessment.model_dump_json()
+    await db.execute(
+        "INSERT INTO assessments (log_id, result_json) VALUES (?, ?)",
+        (log_id, result_json),
+    )
+    await db.commit()
+    await db.close()
+
+    return {
+        "log": log_row,
+        "assessment": assessment.model_dump(),
+    }
+
+
+@router.post("/assess")
 async def assess_file(file: UploadFile = File(None), text: str = Form(None)):
     """Accept a police log as uploaded .txt file or pasted text."""
     if file and file.filename:
@@ -53,35 +89,17 @@ async def assess_file(file: UploadFile = File(None), text: str = Form(None)):
     if not content:
         raise HTTPException(400, "Log is empty")
 
-    db = await get_db()
-    cursor = await db.execute(
-        "INSERT INTO logs (source, filename, text) VALUES (?, ?, ?)",
-        (source, filename, content),
-    )
-    await db.commit()
-    row = await db.execute("SELECT * FROM logs WHERE id = ?", (cursor.lastrowid,))
-    log = await row.fetchone()
-    await db.close()
-    return dict(log)
+    return await _store_and_assess(content, source, filename)
 
 
-@router.post("/assess/json", response_model=LogResponse)
+@router.post("/assess/json")
 async def assess_json(body: AssessTextRequest):
     """Accept a police log as JSON body (pasted text)."""
     content = body.text.strip()
     if not content:
         raise HTTPException(400, "Log is empty")
 
-    db = await get_db()
-    cursor = await db.execute(
-        "INSERT INTO logs (source, filename, text) VALUES (?, ?, ?)",
-        ("paste", None, content),
-    )
-    await db.commit()
-    row = await db.execute("SELECT * FROM logs WHERE id = ?", (cursor.lastrowid,))
-    log = await row.fetchone()
-    await db.close()
-    return dict(log)
+    return await _store_and_assess(content, "paste", None)
 
 
 @router.get("/logs", response_model=list[LogResponse])
@@ -93,15 +111,26 @@ async def list_logs():
     return logs
 
 
-@router.get("/logs/{log_id}", response_model=LogResponse)
+@router.get("/logs/{log_id}")
 async def get_log(log_id: int):
     db = await get_db()
     row = await db.execute("SELECT * FROM logs WHERE id = ?", (log_id,))
-    log = await row.fetchone()
-    await db.close()
-    if not log:
+    log_row = await row.fetchone()
+    if not log_row:
+        await db.close()
         raise HTTPException(404, "Log not found")
-    return dict(log)
+    log_data = dict(log_row)
+
+    arow = await db.execute(
+        "SELECT result_json FROM assessments WHERE log_id = ?", (log_id,)
+    )
+    assessment_row = await arow.fetchone()
+    await db.close()
+
+    result = {"log": log_data}
+    if assessment_row:
+        result["assessment"] = json.loads(assessment_row["result_json"])
+    return result
 
 
 @router.delete("/logs/{log_id}")
@@ -111,6 +140,7 @@ async def delete_log(log_id: int):
     if not await row.fetchone():
         await db.close()
         raise HTTPException(404, "Log not found")
+    await db.execute("DELETE FROM assessments WHERE log_id = ?", (log_id,))
     await db.execute("DELETE FROM logs WHERE id = ?", (log_id,))
     await db.commit()
     await db.close()
