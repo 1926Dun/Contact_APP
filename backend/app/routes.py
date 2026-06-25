@@ -17,6 +17,7 @@ router = APIRouter(prefix="/api")
 
 class AssessTextRequest(BaseModel):
     text: str
+    redact: bool = False
 
 
 class LogResponse(BaseModel):
@@ -41,7 +42,9 @@ async def knowledge_refresh():
     return {"documents": kb.summary(), "refreshed": True}
 
 
-async def _store_and_assess(content: str, source: str, filename: str | None):
+async def _store_and_assess(
+    content: str, source: str, filename: str | None, use_redaction: bool = False,
+):
     """Store the log, run assessment, store result, return both."""
     db = await get_db()
     cursor = await db.execute(
@@ -54,25 +57,31 @@ async def _store_and_assess(content: str, source: str, filename: str | None):
     row = await db.execute("SELECT * FROM logs WHERE id = ?", (log_id,))
     log_row = dict(await row.fetchone())
 
-    log.info("Running assessment for log %d", log_id)
-    assessment = assess_log(content)
+    log.info("Running assessment for log %d (redaction=%s)", log_id, use_redaction)
+    assessment, redaction_info = assess_log(content, use_redaction=use_redaction)
 
     result_json = assessment.model_dump_json()
+    redaction_json = json.dumps(redaction_info) if redaction_info else None
     await db.execute(
-        "INSERT INTO assessments (log_id, result_json) VALUES (?, ?)",
-        (log_id, result_json),
+        "INSERT INTO assessments (log_id, result_json, redaction_json) VALUES (?, ?, ?)",
+        (log_id, result_json, redaction_json),
     )
     await db.commit()
     await db.close()
 
-    return {
-        "log": log_row,
-        "assessment": assessment.model_dump(),
-    }
+    result = {"log": log_row, "assessment": assessment.model_dump()}
+    if redaction_info:
+        result["redacted"] = True
+        result["redaction_count"] = len(redaction_info["mapping"])
+    return result
 
 
 @router.post("/assess")
-async def assess_file(file: UploadFile = File(None), text: str = Form(None)):
+async def assess_file(
+    file: UploadFile = File(None),
+    text: str = Form(None),
+    redact: bool = Form(False),
+):
     """Accept a police log as uploaded .txt file or pasted text."""
     if file and file.filename:
         if not file.filename.endswith(".txt"):
@@ -91,7 +100,7 @@ async def assess_file(file: UploadFile = File(None), text: str = Form(None)):
     if not content:
         raise HTTPException(400, "Log is empty")
 
-    return await _store_and_assess(content, source, filename)
+    return await _store_and_assess(content, source, filename, use_redaction=redact)
 
 
 @router.post("/assess/json")
@@ -101,7 +110,7 @@ async def assess_json(body: AssessTextRequest):
     if not content:
         raise HTTPException(400, "Log is empty")
 
-    return await _store_and_assess(content, "paste", None)
+    return await _store_and_assess(content, "paste", None, use_redaction=body.redact)
 
 
 @router.get("/logs", response_model=list[LogResponse])

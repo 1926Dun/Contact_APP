@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const resultsContent = document.getElementById("results-content");
   const reportSection = document.getElementById("report-section");
   const reportContent = document.getElementById("report-content");
+  const redactToggle = document.getElementById("redact-toggle");
 
   let activeTab = "paste";
   let selectedFile = null;
@@ -58,16 +59,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     reportSection.hidden = true;
 
     try {
+      const useRedact = redactToggle.checked;
       let res;
       if (activeTab === "upload" && selectedFile) {
         const form = new FormData();
         form.append("file", selectedFile);
+        if (useRedact) form.append("redact", "true");
         res = await fetch("/api/assess", { method: "POST", body: form });
       } else if (activeTab === "paste" && textarea.value.trim()) {
         res = await fetch("/api/assess/json", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text: textarea.value }),
+          body: JSON.stringify({ text: textarea.value, redact: useRedact }),
         });
       } else {
         alert("Please paste a log or upload a .txt file.");
@@ -138,7 +141,13 @@ function renderAssessment(data) {
   const { log, assessment } = data;
   const a = assessment;
 
-  let html = `<div class="result-card">
+  let html = "";
+
+  if (data.redacted) {
+    html += `<div class="redact-notice">Names and identifiers were redacted before AI processing (${data.redaction_count} items pseudonymised). Original values restored in results below.</div>`;
+  }
+
+  html += `<div class="result-card">
     <h3>Summary</h3>
     <p>${esc(a.summary)}</p>
     <p class="result-meta">Log ID: ${log.id} | ${log.created_at}</p>

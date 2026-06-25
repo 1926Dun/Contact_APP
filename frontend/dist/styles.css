@@ -78,6 +78,28 @@ textarea:focus { outline: 2px solid var(--authority-blue); border-color: transpa
 .btn-primary:hover { opacity: 0.9; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
+.redact-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--slate-text);
+}
+
+.redact-toggle input { accent-color: var(--authority-blue); width: 1rem; height: 1rem; }
+
+.redact-notice {
+  background: #e8f4fd;
+  border: 1px solid var(--authority-blue);
+  color: var(--police-navy);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
 .input-tabs {
   display: flex;
   gap: 0;

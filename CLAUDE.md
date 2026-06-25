@@ -217,5 +217,5 @@ Suggested build order:
 - [x] Assessment engine: log ingestion, summary, people extraction, vulnerability flags, points-to-prove mapping, certainty scoring, notifiable cross-reference; `/api/assess`.
 - [x] Selection + report: candidate selection model, report generation (selected + considered), provenance footer; `/api/reports`.
 - [x] Persistence: SQLite for logs, assessments, selections, reports + document versions; `/api/logs` CRUD, `/api/reports/{id}`.
-- [ ] Data handling: optional redaction/pseudonymisation before transmission; audit-trail completeness.
+- [x] Data handling: optional redaction/pseudonymisation before transmission; audit-trail completeness.
 - [ ] UI: paste/upload log → assessment view (summary, people, vulnerabilities, scored candidates) → select crimes → report view with provenance, ordered by certainty.

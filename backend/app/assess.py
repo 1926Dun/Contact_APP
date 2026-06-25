@@ -4,6 +4,7 @@ import logging
 
 from .knowledge import get_knowledge
 from .llm import chat_structured
+from .redact import RedactionResult, redact
 from .schemas import Assessment
 
 log = logging.getLogger(__name__)
@@ -152,11 +153,39 @@ def build_system_prompt() -> str:
     )
 
 
-def assess_log(log_text: str) -> Assessment:
-    """Run a full assessment on a police log."""
+def assess_log(
+    log_text: str, use_redaction: bool = False
+) -> tuple[Assessment, dict | None]:
+    """Run a full assessment on a police log.
+
+    Returns (assessment, redaction_info) where redaction_info is the
+    mapping dict if redaction was used, or None otherwise.
+    """
+    redaction_info = None
+
+    if use_redaction:
+        r = redact(log_text)
+        send_text = r.redacted_text
+        redaction_info = r.to_dict()
+        log.info("Redacted %d identifiers before LLM transmission", len(r.mapping))
+    else:
+        r = None
+        send_text = log_text
+
     system_prompt = build_system_prompt()
     messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": f"Police log:\n\n{log_text}"},
+        {"role": "user", "content": f"Police log:\n\n{send_text}"},
     ]
-    return chat_structured(messages, Assessment)
+    assessment = chat_structured(messages, Assessment)
+
+    if r:
+        assessment = _deredact_assessment(assessment, r)
+
+    return assessment, redaction_info
+
+
+def _deredact_assessment(assessment: Assessment, r: RedactionResult) -> Assessment:
+    """Replace pseudonyms with original values in the assessment."""
+    raw = r.deredact(assessment.model_dump_json())
+    return Assessment.model_validate_json(raw)

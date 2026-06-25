@@ -28,6 +28,7 @@ async def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             log_id INTEGER NOT NULL UNIQUE REFERENCES logs(id) ON DELETE CASCADE,
             result_json TEXT NOT NULL,
+            redaction_json TEXT,
             created_at TEXT NOT NULL DEFAULT (datetime('now'))
         )
     """)
